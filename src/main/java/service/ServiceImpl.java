@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import dao.IDaoClient;
 import model.Client;
+import model.Compte;
 
 @Dependent
 public class ServiceImpl implements IService, Serializable {
@@ -49,6 +50,14 @@ public class ServiceImpl implements IService, Serializable {
 	@Override
 	public void supprimerClient(int id) throws Exception {
 		clientDao.supprimerClient(id);
+	}
+
+	@Override
+	public boolean effectuerVirement(Compte compteInitial, Compte compteDestinataire, double montant) {
+		compteInitial.setSolde(compteInitial.getSolde() - montant);
+		compteDestinataire.setSolde(compteDestinataire.getSolde() + montant);
+		// TODO Trouver un moyen de récupérer le client depuis le compte.
+		return false;
 	}
 
 }

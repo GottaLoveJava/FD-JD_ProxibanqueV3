@@ -7,9 +7,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @ManagedBean
+@Table(name="client")
 public class Client extends Personne implements Serializable {
 
 	private static final long serialVersionUID = 4075611119300579731L;
@@ -21,7 +23,9 @@ public class Client extends Personne implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ID_COMPTE_COURANT", referencedColumnName = "id")
 	private CompteCourant compteCourant;
-//	private CompteEpargne compteEpargne;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ID_COMPTE_EPARGNE", referencedColumnName = "id")
+	private CompteEpargne compteEpargne;
 	private boolean isEntreprise;
 
 	public String getEmail() {
@@ -30,6 +34,10 @@ public class Client extends Personne implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Client() {
+		this.isEntreprise=false;
 	}
 
 	public String getAdresse() {
@@ -72,13 +80,13 @@ public class Client extends Personne implements Serializable {
 		this.compteCourant = compteCourant;
 	}
 
-//	public CompteEpargne getCompteEpargne() {
-//		return compteEpargne;
-//	}
-//
-//	public void setCompteEpargne(CompteEpargne compteEpargne) {
-//		this.compteEpargne = compteEpargne;
-//	}
+	public CompteEpargne getCompteEpargne() {
+		return compteEpargne;
+	}
+
+	public void setCompteEpargne(CompteEpargne compteEpargne) {
+		this.compteEpargne = compteEpargne;
+	}
 
 	public boolean isEntreprise() {
 		return isEntreprise;

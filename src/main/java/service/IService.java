@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 
 import model.Client;
+import model.Compte;
 
 public interface IService {
 
@@ -15,5 +16,7 @@ public interface IService {
 	void modifierClient(Client client) throws Exception;
 
 	void supprimerClient(int id) throws Exception;
+
+	boolean effectuerVirement(Compte compteInitial, Compte compteDestinataire, double montant);
 
 }

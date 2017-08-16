@@ -27,9 +27,10 @@ public class DaoClientImpl implements IDaoClient {
 		try {
 			txn.begin();
 
-			TypedQuery<Client> query = em.createQuery("from CLIENT", Client.class);
+			TypedQuery<Client> query = em.createQuery("from Client", Client.class);
 			retList = query.getResultList();
-
+			
+			
 			txn.commit();
 		} catch (Exception e) {
 			if (txn != null) {
@@ -77,7 +78,7 @@ public class DaoClientImpl implements IDaoClient {
 		try {
 			txn.begin();
 			client = em.find(Client.class, clientId);
-
+			
 			txn.commit();
 		} catch (Exception e) {
 			if (txn != null) {
