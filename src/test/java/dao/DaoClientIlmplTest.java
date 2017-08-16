@@ -24,14 +24,12 @@ public class DaoClientIlmplTest {
 		Client monClient = new Client();
 		monClient.setNom("Cyril");
 		monClient.setPrenom("Rabineau");
-		System.out.println(monClient.getNom()+monClient.getPrenom());
 		CompteCourant courant = new CompteCourant();
 		courant.setSolde(10000);
 		courant.setDateOuverture("25 janvier");
 		courant.setLimiteDecouvert(-4000);
 		courant.setClient(monClient);
 		monClient.setCompteCourant(courant);
-		System.out.println(courant.getSolde());
 		boolean result = dao.ajouterClient(monClient);
 		assertTrue(result);
 	}

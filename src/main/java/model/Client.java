@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -15,8 +16,8 @@ public class Client extends Personne implements Serializable {
 	private String codePostal;
 	private String ville;
 	private String telephone;
-	@OneToOne
-	@JoinColumn(name = "COMPTE_COURANT", referencedColumnName = "id")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ID_COMPTE_COURANT", referencedColumnName = "id")
 	private CompteCourant compteCourant;
 //	private CompteEpargne compteEpargne;
 	private boolean isEntreprise;
