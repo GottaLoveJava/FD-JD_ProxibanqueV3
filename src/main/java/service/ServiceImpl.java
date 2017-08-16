@@ -11,7 +11,7 @@ import dao.IDaoClient;
 import model.Client;
 
 @Dependent
-public class ClientService implements IClientService, Serializable {
+public class ServiceImpl implements IService, Serializable {
 
 	private static final long serialVersionUID = -2153567868395626691L;
 	@Inject

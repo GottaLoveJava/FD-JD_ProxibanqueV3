@@ -4,7 +4,7 @@ import java.util.List;
 
 import model.Client;
 
-public interface IClientService {
+public interface IService {
 
 	List<Client> listeClients() throws Exception;
 

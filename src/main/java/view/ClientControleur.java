@@ -16,7 +16,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import model.Client;
-import service.IClientService;
+import service.IService;
 
 @Named
 @SessionScoped
@@ -28,7 +28,7 @@ public class ClientControleur implements Serializable{
 	private Logger logger = Logger.getLogger(getClass().getName());
 
 	@Inject
-	private IClientService service;
+	private IService service;
 
 	public ClientControleur() throws Exception {
 		clients = new ArrayList<>();
