@@ -8,9 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@Table(name="Personne")
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Personne implements Serializable{
 
 	private static final long serialVersionUID = -1108369318863008217L;

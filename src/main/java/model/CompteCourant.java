@@ -5,9 +5,12 @@ import java.io.Serializable;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 @Entity
-@DiscriminatorValue("COURANT")
+@Table(name="COMPTE_COURANT")
+@PrimaryKeyJoinColumn(name="id")
 public class CompteCourant extends Compte implements Serializable{
 
 	private static final long serialVersionUID = -6529403517496177319L;
