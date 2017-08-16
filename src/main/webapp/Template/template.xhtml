@@ -10,29 +10,37 @@
 	<title>Insert title here</title>
 </h:head>
 <h:body>
-<ui:insert name="retourAccueil">
-<b:navBar brand="Brand" brandHref="#" inverse="true">
-    <b:navbarLinks>
-        <b:navLink value="Home" href="#"></b:navLink>
-        <b:navLink value="Link" href="#"></b:navLink>
-        <b:navLink value="Link" href="#"></b:navLink>
-    </b:navbarLinks>
-</b:navBar>
-</ui:insert>
+	<ui:insert name="retourAccueil">
+		<b:navBar brand="Proxibanque" brandHref="#" inverse="true">
+			<b:navbarLinks>
+				<b:navLink value="" href=""></b:navLink>
+				<b:navLink value="" href=""></b:navLink>
+				<b:navLink value="" href=""></b:navLink>
+				<b:navLink value="" href=""></b:navLink>
+				<b:navLink value="" href=""></b:navLink>
+				<b:navLink value="" href=""></b:navLink>
+				<b:navLink value="" href=""></b:navLink>
+				<b:navLink value="" href=""></b:navLink>
 
-	<ui:insert name="barredenavigation">
-		<b:tabView activeIndex="2">
-			<b:tab title="First Tab">
+				<b:navLink value="Déconnexion" href="login.html"></b:navLink>
+			</b:navbarLinks>
+		</b:navBar>
+	</ui:insert>
+
+	<ui:insert name="barreNavigation">
+		<b:tabView
+			contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+			<b:tab title="Afficher la liste de mes clients">
 				<p>This is the first tab.</p>
 			</b:tab>
-			<b:tab title="Another Tab">
+			<b:tab title="Réaliser un virement">
 				<p>This is the second tab.</p>
 			</b:tab>
 			<!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
-			<b:tab title="Image Tab">
+			<b:tab title="Effectuer l'audit des comptes">
       ...
     </b:tab>
-			<b:tab title="Fancy tab">
+			<b:tab title="">
 				<f:facet name="anchor">
 					<b:iconAwesome name="cog" spin="true" />
 				</f:facet>
