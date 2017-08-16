@@ -1,5 +1,31 @@
 package model;
 
-public class CompteCourant extends Compte {
+import java.io.Serializable;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+@Entity
+@DiscriminatorValue("COURANT")
+public class CompteCourant extends Compte implements Serializable{
+
+	private static final long serialVersionUID = -6529403517496177319L;
+	private double limiteDecouvert;
+	@OneToOne(mappedBy="compteCourant")
+	private Client client;
+	public double getLimiteDecouvert() {
+		return limiteDecouvert;
+	}
+	public void setLimiteDecouvert(double limiteDecouvert) {
+		this.limiteDecouvert = limiteDecouvert;
+	}
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	
 
 }

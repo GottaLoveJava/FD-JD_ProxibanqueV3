@@ -16,6 +16,8 @@ public class DaoClientIlmpl {
 		boolean result = false;
 		try {
 			txn.begin();
+			//TODO Revoir
+			client.getCompteCourant().getSolde();
 			em.persist(client);
 			txn.commit();
 		} catch (Exception e) {
