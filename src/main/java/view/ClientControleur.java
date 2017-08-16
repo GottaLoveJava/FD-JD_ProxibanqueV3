@@ -24,51 +24,51 @@ public class ClientControleur implements Serializable{
 
 	private static final long serialVersionUID = 3774463683041113840L;
 
-	private List<Client> students;
+	private List<Client> clients;
 	private Logger logger = Logger.getLogger(getClass().getName());
 
 	@Inject
 	private IClientService service;
 
 	public ClientControleur() throws Exception {
-		students = new ArrayList<>();
+		clients = new ArrayList<>();
 	
 	}
 
 	@PostConstruct
 	public void initService() {
-		System.out.println(this.getClass().getName()+"je suis ;;construit !"+service);
+		System.out.println(this.getClass().getName()+"je suis construit ! "+service);
 	}
 
-	public List<Client> getStudents() {
-		return students;
+	public List<Client> getClients() {
+		return clients;
 	}
 
-	public void loadStudents() {
+	public void loadclients() {
 
-		logger.info("Loading students");
+		logger.info("Loading clients");
 
-		students.clear();
+		clients.clear();
 
 		try {
 
-			students = service.listeClients();
+			clients = service.listeClients();
 
 		} catch (Exception exc) {
-			logger.log(Level.SEVERE, "Error loading students", exc);
+			logger.log(Level.SEVERE, "Error loading clients", exc);
 			addErrorMessage(exc);
 		}
 	}
 
-	public String addStudent(Client theStudent) {
+	public String addClient(Client client) {
 
-		logger.info("Adding student: " + theStudent);
+		logger.info("Adding client: " + client);
 
 		try {
-			service.ajouterClient(theStudent);
+			service.ajouterClient(client);
 
 		} catch (Exception exc) {
-			logger.log(Level.SEVERE, "Error adding students", exc);
+			logger.log(Level.SEVERE, "Error adding clients", exc);
 			addErrorMessage(exc);
 
 			return null;
@@ -77,7 +77,7 @@ public class ClientControleur implements Serializable{
 		return "liste-clients?faces-redirect=true";
 	}
 
-	public String loadStudent(int clientId) {
+	public String loadClient(int clientId) {
 
 		logger.info("Chargement du client numéro : " + clientId);
 
@@ -86,10 +86,10 @@ public class ClientControleur implements Serializable{
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 
 			Map<String, Object> requestMap = externalContext.getRequestMap();
-			requestMap.put("student", client);
+			requestMap.put("client", client);
 
 		} catch (Exception exc) {
-			logger.log(Level.SEVERE, "Error loading student id:" + clientId, exc);
+			logger.log(Level.SEVERE, "Error loading client id:" + clientId, exc);
 			addErrorMessage(exc);
 
 			return null;
@@ -98,18 +98,18 @@ public class ClientControleur implements Serializable{
 		return "modifier-client-form.xhtml";
 	}
 
-	public String updateStudent(Client client) {
+	public String updateClient(Client client) {
 
 		logger.info("Modification client: " + client);
 
 		try {
 
-			// update student in the database
+			// update client in the database
 			service.modifierClient(client);
 
 		} catch (Exception exc) {
 			// send this to server logs
-			logger.log(Level.SEVERE, "Error updating student: " + client, exc);
+			logger.log(Level.SEVERE, "Error updating client: " + client, exc);
 
 			// add error message for JSF page
 			addErrorMessage(exc);
@@ -117,21 +117,21 @@ public class ClientControleur implements Serializable{
 			return null;
 		}
 
-		return "list-students?faces-redirect=true";
+		return "list-clients?faces-redirect=true";
 	}
 
-	public String deleteStudent(int studentId) {
+	public String deleteClient(int clientId) {
 
-		logger.info("Deleting student id: " + studentId);
+		logger.info("Deleting client id: " + clientId);
 
 		try {
 
-			// delete the student from the database
-			service.supprimerClient(studentId);
+			// delete the client from the database
+			service.supprimerClient(clientId);
 
 		} catch (Exception exc) {
 			// send this to server logs
-			logger.log(Level.SEVERE, "Error deleting student id: " + studentId, exc);
+			logger.log(Level.SEVERE, "Error deleting client id: " + clientId, exc);
 
 			// add error message for JSF page
 			addErrorMessage(exc);
@@ -139,7 +139,7 @@ public class ClientControleur implements Serializable{
 			return null;
 		}
 
-		return "list-students";
+		return "list-clients";
 	}
 
 	private void addErrorMessage(Exception exc) {

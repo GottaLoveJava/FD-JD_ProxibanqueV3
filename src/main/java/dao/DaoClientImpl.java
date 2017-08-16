@@ -15,7 +15,7 @@ import model.Client;
 
 @Named
 @ApplicationScoped
-public class ClientDao implements IClientDao {
+public class DaoClientImpl implements IDaoClient {
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("my-pu");
 
 
@@ -27,7 +27,7 @@ public class ClientDao implements IClientDao {
 		try {
 			txn.begin();
 
-			TypedQuery<Client> query = em.createQuery("from Student", Client.class);
+			TypedQuery<Client> query = em.createQuery("from CLIENT", Client.class);
 			retList = query.getResultList();
 
 			txn.commit();
@@ -46,16 +46,15 @@ public class ClientDao implements IClientDao {
 
 
 	@Override
-	public void ajouterClient(Client client) throws Exception {
-
+	public boolean ajouterClient(Client client) throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
+		boolean result = false;
 		try {
 			txn.begin();
-
 			em.persist(client);
-
 			txn.commit();
+			result = true;
 		} catch (Exception e) {
 			if (txn != null) {
 				txn.rollback();
@@ -66,17 +65,18 @@ public class ClientDao implements IClientDao {
 				em.close();
 			}
 		}
+		return result;
 	}
 
 
 	@Override
-	public Client afficherClient(int studentId) throws Exception {
-		Client student = new Client();
+	public Client afficherClient(int clientId) throws Exception {
+		Client client = new Client();
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
 		try {
 			txn.begin();
-			student = em.find(Client.class, studentId);
+			client = em.find(Client.class, clientId);
 
 			txn.commit();
 		} catch (Exception e) {
@@ -89,18 +89,20 @@ public class ClientDao implements IClientDao {
 				em.close();
 			}
 		}
-		return student;
+		return client;
 	}
 
 
 	@Override
-	public void modifierClient(Client client) throws Exception {
+	public boolean modifierClient(Client client) throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
+		boolean result = false;
 		try {
 			txn.begin();
 			em.merge(client);
 			txn.commit();
+			result = true;
 		} catch (Exception e) {
 			if (txn != null) {
 				txn.rollback();
@@ -111,19 +113,23 @@ public class ClientDao implements IClientDao {
 				em.close();
 			}
 		}
+		return result;
+		
 
 	}
 
 
 	@Override
-	public void supprimerClient(int clientId) throws Exception {
+	public boolean supprimerClient(int clientId) throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
+		boolean result = false;
 		try {
 			txn.begin();
-			Client student = em.find(Client.class, clientId);
-			em.remove(student);
+			Client client = em.find(Client.class, clientId);
+			em.remove(client);
 			txn.commit();
+			result = true;
 		} catch (Exception e) {
 			if (txn != null) {
 				txn.rollback();
@@ -134,6 +140,7 @@ public class ClientDao implements IClientDao {
 				em.close();
 			}
 		}
+		return result;
 
 	}
 

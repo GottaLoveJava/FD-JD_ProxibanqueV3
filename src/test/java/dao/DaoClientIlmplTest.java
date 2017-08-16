@@ -8,7 +8,7 @@ import model.Client;
 import model.CompteCourant;
 
 public class DaoClientIlmplTest {
-	DaoClientIlmpl dao = new DaoClientIlmpl();
+	IDaoClient dao = new DaoClientImpl();
 	
 	@Test
 	public void testAjouterClient_DevraitAjouterUnClient() throws Exception {

@@ -7,7 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
-import dao.IClientDao;
+import dao.IDaoClient;
 import model.Client;
 
 @Dependent
@@ -15,40 +15,40 @@ public class ClientService implements IClientService, Serializable {
 
 	private static final long serialVersionUID = -2153567868395626691L;
 	@Inject
-	private IClientDao studentDao;
+	private IDaoClient clientDao;
 
 	@PostConstruct
 	public void initService() {
-		System.out.println(this.getClass().getName() + "je suis aps construit !" + studentDao);
+		System.out.println(this.getClass().getName() + "je ne suis pas construit !" + clientDao);
 	}
 
 	@Override
 	public List<Client> listeClients() throws Exception {
-		List<Client> clients = studentDao.listeClients();
+		List<Client> clients = clientDao.listeClients();
 		return clients;
 	}
 
 	@Override
 	public void ajouterClient(Client client) throws Exception {
-		studentDao.ajouterClient(client);
+		clientDao.ajouterClient(client);
 
 	}
 
 	@Override
 	public Client afficherClient(int clientId) throws Exception {
-		Client student = studentDao.afficherClient(clientId);
-		return student;
+		Client client = clientDao.afficherClient(clientId);
+		return client;
 	}
 
 	@Override
 	public void modifierClient(Client client) throws Exception {
-		studentDao.modifierClient(client);
+		clientDao.modifierClient(client);
 
 	}
 
 	@Override
 	public void supprimerClient(int id) throws Exception {
-		studentDao.supprimerClient(id);
+		clientDao.supprimerClient(id);
 	}
 
 }
