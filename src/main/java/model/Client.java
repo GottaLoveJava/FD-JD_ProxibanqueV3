@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.Entity;
 
+
 @Entity
 public class Client extends Personne{
 	private String email;
