@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+<ui:insert name="retourAccueil">
+<b:navBar brand="Brand" brandHref="#" inverse="true">
+    <b:navbarLinks>
+        <b:navLink value="Home" href="#"></b:navLink>
+        <b:navLink value="Link" href="#"></b:navLink>
+        <b:navLink value="Link" href="#"></b:navLink>
+    </b:navbarLinks>
+</b:navBar>
+</ui:insert>
+
+	<ui:insert name="barredenavigation">
+		<b:tabView activeIndex="2">
+			<b:tab title="First Tab">
+				<p>This is the first tab.</p>
+			</b:tab>
+			<b:tab title="Another Tab">
+				<p>This is the second tab.</p>
+			</b:tab>
+			<!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
+			<b:tab title="Image Tab">
+      ...
+    </b:tab>
+			<b:tab title="Fancy tab">
+				<f:facet name="anchor">
+					<b:iconAwesome name="cog" spin="true" />
+				</f:facet>
+				<p>This is fancy tab with a spinning image.</p>
+			</b:tab>
+		</b:tabView>
+	</ui:insert>
+</h:body>
+</html>
