@@ -1,7 +1,7 @@
 package model;
 
 
-public class Client extends Personne{
+public class Client extends Personne {
 	private String email;
 	private String adresse;
 	private String codePostal;
