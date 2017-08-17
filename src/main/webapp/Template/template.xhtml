@@ -7,7 +7,7 @@
 	xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Insert title here</title>
+	<title>Proxibanque V3</title>
 </h:head>
 <h:body>
 	<ui:insert name="retourAccueil">
@@ -21,7 +21,7 @@
 
 					<h:form
 						class="navbar-form navbar-left hidden-md hidden-sm hidden-xs">
-						<b:commandButton value="Déconnexion" action="#{userControleur.logOut}" ajax="true" look="primary" />
+						<b:commandButton value="Deconnexion" action="login.html" ajax="true" look="primary" />
 					</h:form>
 				</b:navbarLinks>
 			</b:navbarLinks>
@@ -29,27 +29,7 @@
 	</ui:insert>
 
 <!-- TODO : Remplacer par une tabLink -->
-	<ui:insert name="barreNavigation">
-		<b:tabView
-			contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-			<b:tab title="Afficher la liste de mes clients">
-				<p></p>
-			</b:tab>
-			<b:tab title="Réaliser un virement">
-				<p>This is the second tab.</p>
-			</b:tab>
-			<!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
-			<b:tab title="Effectuer l'audit des comptes">
-      ...
-    </b:tab>
-			<b:tab title="">
-				<f:facet name="anchor">
-					<b:iconAwesome title="Créer un client" name="cog" spin="true" />
-				</f:facet>
-				<p></p>
-			</b:tab>
-		</b:tabView>
-	</ui:insert>
+	
 	<ui:insert name="footer">
 		<b:navBar brand="Proxibanque" brandHref="liste-clients.xhtml" inverse="true"
 			position="bottom" />

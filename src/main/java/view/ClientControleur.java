@@ -80,16 +80,16 @@ public class ClientControleur implements Serializable {
 		return "liste-clients?faces-redirect=true";
 	}
 
-	public String loadClient(int clientId) {
+	public String loadClient(long idClient) {
 
-		logger.info("Chargement du client numéro : " + clientId);
+		logger.info("Chargement du client numéro : " + idClient);
 		try {
-			Client client = service.afficherClient(clientId);
+			Client client = service.afficherClient(idClient);
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 			Map<String, Object> requestMap = externalContext.getRequestMap();
 			requestMap.put("client", client);
 		} catch (Exception exc) {
-			logger.log(Level.SEVERE, "Error loading client id:" + clientId, exc);
+			logger.log(Level.SEVERE, "Error loading client id:" + idClient, exc);
 			afficherErreur(exc);
 			return null;
 		}
@@ -97,7 +97,7 @@ public class ClientControleur implements Serializable {
 		return "modifier-client-form.xhtml";
 	}
 	
-	public String compteClient(int clientId) {
+	public String compteClient(long clientId) {
 
 		logger.info("Chargement du client numéro : " + clientId);
 		try {

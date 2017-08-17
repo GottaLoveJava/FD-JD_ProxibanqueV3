@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
 
 <f:metadata>
 	<f:event type="preRenderView"
@@ -9,101 +11,102 @@
 </f:metadata>
 
 <h:head>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 	<title>Liste des clients</title>
 
-	<!-- 	<h:outputStylesheet library="css" name="style.css" /> -->
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
 
 </h:head>
 
 <h:body>
-
-	<div id="wrapper">
+	<ui:decorate template="/Template/template.xhtml" />
+	<div id="wrapper" class="jumbotron">
 		<div id="header">
 			<h2>Proxibanque</h2>
 			Bienvenue
 			<h:outputText value="#{request.remoteUser}" />
 		</div>
-	</div>
 
-	<div id="container">
 
-		<div id="content">
+		<div id="container">
 
-			<h:messages globalOnly="true" />
+			<div id="content">
 
-			<h:button value="Ajouter un client à la base de données"
-				styleClass="add-student-button" outcome="ajouter-client-form" />
+				<h:messages globalOnly="true" />
 
-			<h:form>
+				<h:button value="Ajouter un client à la base de données"
+					styleClass="add-student-button" outcome="ajouter-client-form" />
+				<br />
+				<h:form>
 
-				<h:dataTable value="#{clientControleur.clients}" var="tempClient"
-					styleClass="demo-table" headerClass="demo-table-header"
-					rowClasses="demo-table-odd-row,demo-table-even-row">
+					<h:dataTable value="#{clientControleur.clients}" var="tempClient"
+						styleClass="demo-table" headerClass="demo-table-header"
+						rowClasses="demo-table-odd-row,demo-table-even-row">
 
-					<h:column>
-						<!-- the column header -->
-						<f:facet name="header">Prénom</f:facet>
+						<h:column>
+							<!-- the column header -->
+							<f:facet name="header">Prénom</f:facet>
 
-						<!--  the value for each row -->
+							<!--  the value for each row -->
 						#{tempClient.prenom}
 				</h:column>
 
-					<h:column>
-						<!-- the column header -->
-						<f:facet name="header">Nom</f:facet>
+						<h:column>
+							<!-- the column header -->
+							<f:facet name="header">Nom</f:facet>
 
-						<!--  the value for each row -->
+							<!--  the value for each row -->
 						#{tempClient.nom}
 				</h:column>
 
-					<h:column>
-						<!-- the column header -->
-						<f:facet name="header">Email</f:facet>
+						<h:column>
+							<!-- the column header -->
+							<f:facet name="header">Email</f:facet>
 
-						<!--  the value for each row -->
+							<!--  the value for each row -->
 						#{tempClient.email}
 				</h:column>
 						<h:column>
-						<!-- the column header -->
-						<f:facet name="header">Compte Epargne</f:facet>
+							<!-- the column header -->
+							<f:facet name="header">Compte Epargne</f:facet>
 
-						<!--  the value for each row -->
+							<!--  the value for each row -->
 						#{tempClient.compteEpargne}
-				</h:column>	<h:column>
-						<!-- the column header -->
-						<f:facet name="header">Compte Courant</f:facet>
+				</h:column>
+						<h:column>
+							<!-- the column header -->
+							<f:facet name="header">Compte Courant</f:facet>
 
-						<!--  the value for each row -->
+							<!--  the value for each row -->
 						#{tempClient.compteCourant}
 				</h:column>
-					<h:column>
-						<!-- the column header -->
-						<f:facet name="header">Action</f:facet>
+						<h:column>
+							<!-- the column header -->
+							<f:facet name="header">Action</f:facet>
 
-						<h:commandLink value="Comptes"
-							action="#{clientControleur.compteClient(tempClient.id)}"/>
+							<h:commandLink value="Comptes"
+								action="#{clientControleur.compteClient(tempClient.id)}" />
 
-					<h:commandLink value="Mettre à jour le client"
-							action="#{clientControleur.loadClient(tempClient.id)}" />
-					
+							<h:commandLink value="Mettre à jour le client"
+								action="#{clientControleur.loadClient(tempClient.id)}" />
 
-					<h:commandLink value="Delete"
-							onclick="if (!confirm('Voulez-vous supprimer ce client?')) return false"
-							action="#{clientControleur.supprimerClient(tempClient.id)}" />
 
-					</h:column>
+							<h:commandLink value="Delete"
+								onclick="if (!confirm('Voulez-vous supprimer ce client?')) return false"
+								action="#{clientControleur.supprimerClient(tempClient.id)}" />
 
-				</h:dataTable>
-				<div>
-					<!-- creer un lien pour se delogger -->
-				</div>
-			</h:form>
+						</h:column>
+
+					</h:dataTable>
+					<div></div>
+				</h:form>
+
+			</div>
 
 		</div>
-
 	</div>
 
 </h:body>

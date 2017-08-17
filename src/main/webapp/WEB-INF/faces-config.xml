@@ -5,16 +5,11 @@
 	version="2.2">
 
 	<navigation-rule>
-		<from-view-id>/index.xhtml</from-view-id>
+		<from-view-id>/*</from-view-id>
 		<navigation-case>
-			<from-action>#{LoginForm.login}</from-action>
+			<from-action>#{userControleur.logOut}</from-action>
 			<from-outcome>success</from-outcome>
-			<to-view-id>/storefront.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-action>#{LoginForm.logon}</from-action>
-			<from-outcome>failure</from-outcome>
-			<to-view-id>/logon.xhtml</to-view-id>
+			<to-view-id>/login.html</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

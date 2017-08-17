@@ -1,0 +1,29 @@
+body {
+	padding-top: 70px;
+	padding-bottom: 30px;
+	padding-left: 30px;
+
+
+}
+
+.theme-dropdown .dropdown-menu {
+	position: static;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.theme-showcase>p>.btn {
+	margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+	width: auto;
+}
+
+}
+button {
+	padding: 15px;
+	margin: 0 auto;
+	text-align: center;
+	
+}
