@@ -37,6 +37,20 @@ public class ClientControleur implements Serializable {
 	public ClientControleur() throws Exception {
 		clients = new ArrayList<>();
 		chargerClients();
+
+		for (Client client : clients) {
+			try {
+				listeComptes.add(client.getCompteCourant());
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+			try {
+				listeComptes.add(client.getCompteEpargne());
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 	@PostConstruct
@@ -117,18 +131,42 @@ public class ClientControleur implements Serializable {
 
 		return "liste-clients";
 	}
-	
+
 	public List<Compte> afficherComptes(long clientId) {
 		return service.afficherComptes(clientId);
 
 	}
-	
+
 	public Compte afficherCompteEpargne(long clientId) throws Exception {
 		return service.afficherCompteEpargne(clientId);
 	}
 
 	public Compte afficherCompteCourant(long clientId) throws Exception {
 		return service.afficherCompteCourant(clientId);
+	}
+
+	public Compte getCompteInitial() {
+		return compteInitial;
+	}
+
+	public void setCompteInitial(Compte compteInitial) {
+		this.compteInitial = compteInitial;
+	}
+
+	public Compte getCompteDestinataire() {
+		return compteDestinataire;
+	}
+
+	public void setCompteDestinataire(Compte compteDestinataire) {
+		this.compteDestinataire = compteDestinataire;
+	}
+
+	public List<Compte> getListeComptes() {
+		return listeComptes;
+	}
+
+	public void setListeComptes(List<Compte> listeComptes) {
+		this.listeComptes = listeComptes;
 	}
 
 	private void afficherErreur(Exception exc) {
