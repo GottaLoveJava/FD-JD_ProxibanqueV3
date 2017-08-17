@@ -4,14 +4,15 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
 import dao.IDaoClient;
 import model.Client;
 import model.Compte;
+import model.CompteCourant;
+import model.CompteEpargne;
 
-@Dependent
+
 public class ServiceImpl implements IService, Serializable {
 
 	private static final long serialVersionUID = -2153567868395626691L;
@@ -53,11 +54,26 @@ public class ServiceImpl implements IService, Serializable {
 	}
 
 	@Override
-	public boolean effectuerVirement(Compte compteInitial, Compte compteDestinataire, double montant) {
+	public boolean effectuerVirement(Compte compteInitial, Compte compteDestinataire, double montant) throws Exception {
 		compteInitial.setSolde(compteInitial.getSolde() - montant);
 		compteDestinataire.setSolde(compteDestinataire.getSolde() + montant);
-		// TODO Trouver un moyen de récupérer le client depuis le compte.
+		modifierClient(retrouverClient(compteInitial));
+		modifierClient(retrouverClient(compteDestinataire));
 		return false;
 	}
+	
+	private Client retrouverClient(Compte compte) {
+		Client client = new Client();
+		if("model.CompteCourant".equals(compte.getClass().getName())) {
+			client = ((CompteCourant) compte).getClient();
+		}
+		if("model.CompteEpargne".equals(compte.getClass().getName())) {
+			client = ((CompteEpargne) compte).getClient();
+		}
+		return client;
+	}
+
+	
+	
 
 }
