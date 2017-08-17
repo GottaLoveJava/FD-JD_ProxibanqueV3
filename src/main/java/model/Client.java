@@ -3,7 +3,6 @@ package model;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
