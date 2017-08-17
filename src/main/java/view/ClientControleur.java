@@ -20,6 +20,11 @@ import model.Client;
 import model.Compte;
 import service.IService;
 
+/**
+ * @author François Destremau, Jean Deglaire
+ * @version v3.0 Cette classe permet de gérer l'ensemble des vues
+ *
+ */
 @Named
 @SessionScoped
 public class ClientControleur implements Serializable {
@@ -171,6 +176,10 @@ public class ClientControleur implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
+	/**
+	 * Méthode permettant d'effectuer des virements de compte à compte
+	 * @throws Exception lors de la création de session
+	 */
 	public void effectuerVirement() throws Exception {
 		Compte compteInitial = null;
 		Compte compteDestinataire = null;
@@ -218,6 +227,9 @@ public class ClientControleur implements Serializable {
 		this.idCompteDestinataire = idCompteDestinataire;
 	}
 
+	/**
+	 * Méthode permettant de se délogger
+	 */
 	public String logout() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		session.removeAttribute("loggedUser");

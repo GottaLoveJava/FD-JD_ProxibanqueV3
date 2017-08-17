@@ -12,7 +12,12 @@ import model.Client;
 import model.Compte;
 import model.CompteCourant;
 import model.CompteEpargne;
-
+/**
+ * @author François Destremau, Jean Deglaire
+ * @version v3.0
+ * Cette classe gère les méthodes métier, on injecte un objet dao avec
+ * CDI pour découpler la dao et le service
+ */
 public class ServiceImpl implements IService, Serializable {
 
 	private static final long serialVersionUID = -2153567868395626691L;
