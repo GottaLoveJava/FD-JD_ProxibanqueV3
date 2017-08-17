@@ -7,6 +7,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+/**
+ * @author Francois Destremau, Jean Deglaire
+ * @version v3.0
+ *
+ *          Cette classe est responsable de la modélisation d'un compte Epargne
+ *
+ */
 @Entity
 @Table(name = "COMPTE_EPARGNE")
 @PrimaryKeyJoinColumn(name = "id")
@@ -14,7 +21,7 @@ public class CompteEpargne extends Compte implements Serializable {
 
 	private static final long serialVersionUID = 4306572688406482151L;
 	private double tauxRemuneration;
-	@OneToOne(mappedBy="compteEpargne")
+	@OneToOne(mappedBy = "compteEpargne")
 	private Client client;
 
 	public double getTauxRemuneration() {
@@ -35,7 +42,8 @@ public class CompteEpargne extends Compte implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Compte n° : "+this.getId()+" / Propriétaire : "+this.client.getNom()+" / Solde : "+ this.getSolde();
+		return "Compte n° : " + this.getId() + " / Propriétaire : " + this.client.getNom() + " / Solde : "
+				+ this.getSolde();
 	}
 
 }

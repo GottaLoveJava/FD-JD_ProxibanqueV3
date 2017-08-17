@@ -10,7 +10,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
+/**
+ * 
+ * @author Francois Destremau, Jean Deglaire
+ * @version v3.0
+ *
+ *          Cette classe est responsable de la modélisation d'un client.
+ */
 @Entity
 @ManagedBean
 @SessionScoped
@@ -31,16 +37,16 @@ public class Client extends Personne implements Serializable {
 	private CompteEpargne compteEpargne;
 	private boolean isEntreprise;
 
+	public Client() {
+		this.isEntreprise = false;
+	}
+
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Client() {
-		this.isEntreprise = false;
 	}
 
 	public String getAdresse() {

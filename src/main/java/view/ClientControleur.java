@@ -97,9 +97,8 @@ public class ClientControleur implements Serializable {
 
 		return "modifier-client-form.xhtml";
 	}
-	
-	public String compteClient(long clientId) {
 
+	public String compteClient(long clientId) {
 
 		logger.info("Chargement du client numéro : " + clientId);
 		try {
@@ -176,7 +175,8 @@ public class ClientControleur implements Serializable {
 		Compte compteInitial = null;
 		Compte compteDestinataire = null;
 		try {
-			System.out.println("init : " + idCompteInitial + " dest : " + idCompteDestinataire + " montant : " + montant);
+			System.out
+					.println("init : " + idCompteInitial + " dest : " + idCompteDestinataire + " montant : " + montant);
 			for (Compte compte : listeComptes) {
 				if (compte.getId() == idCompteInitial) {
 					compteInitial = compte;
@@ -187,7 +187,7 @@ public class ClientControleur implements Serializable {
 			}
 			System.out.println(compteInitial.getId());
 			System.out.println(compteDestinataire.getId());
-			
+
 			service.effectuerVirement(compteInitial, compteDestinataire, montant);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
@@ -206,7 +206,6 @@ public class ClientControleur implements Serializable {
 		return idCompteInitial;
 	}
 
-
 	public void setIdCompteInitial(Long idCompteInitial) {
 		this.idCompteInitial = idCompteInitial;
 	}
@@ -218,13 +217,12 @@ public class ClientControleur implements Serializable {
 	public void setIdCompteDestinataire(Long idCompteDestinataire) {
 		this.idCompteDestinataire = idCompteDestinataire;
 	}
-	
+
 	public String logout() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		session.removeAttribute("loggedUser");
 		return "login.html";
 	}
-
 
 	public void effectuerVirement(Compte compteInitial, Compte compteDestinataire, double montant) throws Exception {
 		service.effectuerVirement(compteInitial, compteDestinataire, montant);

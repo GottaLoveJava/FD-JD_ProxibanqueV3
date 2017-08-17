@@ -10,10 +10,17 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+/**
+ * @author Francois Destremau, Jean Deglaire
+ * @version v3.0
+ *
+ *Cette classe est responsable de la modélisation d'une Personne (Client uniquement dans cette version)
+ *
+ */
 @Entity
-@Table(name="Personne")
-@Inheritance(strategy=InheritanceType.JOINED)
-public class Personne implements Serializable{
+@Table(name = "Personne")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Personne implements Serializable {
 
 	private static final long serialVersionUID = -1108369318863008217L;
 	@Id
