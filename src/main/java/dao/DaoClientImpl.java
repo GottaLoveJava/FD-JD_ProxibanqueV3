@@ -121,7 +121,7 @@ public class DaoClientImpl implements IDaoClient {
 
 
 	@Override
-	public boolean supprimerClient(int clientId) throws Exception {
+	public boolean supprimerClient(long clientId) throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
 		boolean result = false;

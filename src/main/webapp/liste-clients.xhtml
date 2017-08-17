@@ -24,7 +24,6 @@
 		<div id="header">
 			<h2>Proxibanque</h2>
 			Bienvenue
-			<h:outputText value="#{request.remoteUser}" />
 		</div>
 	</div>
 
@@ -34,8 +33,8 @@
 
 			<h:messages globalOnly="true" />
 
-			<h:button value="Ajouter un client à la base de données" styleClass="add-student-button"
-				outcome="ajouter-client-form" />
+			<h:button value="Ajouter un client à la base de données"
+				styleClass="add-student-button" outcome="ajouter-client-form" />
 
 			<h:form>
 
@@ -43,33 +42,26 @@
 					styleClass="demo-table" headerClass="demo-table-header"
 					rowClasses="demo-table-odd-row,demo-table-even-row">
 
-					<h:column>
+		
+						<h:column>
 						<!-- the column header -->
-						<f:facet name="header">Prénom</f:facet>
+						<f:facet name="header">Compte Epargne</f:facet>
 
 						<!--  the value for each row -->
-						#{tempClient.prenom}
-				</h:column>
-
-					<h:column>
+						#{tempClient.compteEpargne}
+				</h:column>	<h:column>
 						<!-- the column header -->
-						<f:facet name="header">Nom</f:facet>
+						<f:facet name="header">Compte Courant</f:facet>
 
 						<!--  the value for each row -->
-						#{tempClient.nom}
+						#{tempClient.compteCourant}
 				</h:column>
-
-					<h:column>
-						<!-- the column header -->
-						<f:facet name="header">Email</f:facet>
-
-						<!--  the value for each row -->
-						#{tempClient.email}
-				</h:column>
-
 					<h:column>
 						<!-- the column header -->
 						<f:facet name="header">Action</f:facet>
+
+						<h:commandLink value="Comptes"
+							action="#{clientControleur.afficherComptes(tempClient.id)}" />
 
 						<!--  the value for each row -->
 						<h:commandLink value="Update"
@@ -84,7 +76,7 @@
 
 				</h:dataTable>
 				<div>
-<!-- creer un lien pour se delogger -->
+					<!-- creer un lien pour se delogger -->
 				</div>
 			</h:form>
 

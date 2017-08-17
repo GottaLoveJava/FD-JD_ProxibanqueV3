@@ -1,6 +1,7 @@
 package service;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -11,7 +12,6 @@ import model.Client;
 import model.Compte;
 import model.CompteCourant;
 import model.CompteEpargne;
-
 
 public class ServiceImpl implements IService, Serializable {
 
@@ -49,7 +49,7 @@ public class ServiceImpl implements IService, Serializable {
 	}
 
 	@Override
-	public void supprimerClient(int id) throws Exception {
+	public void supprimerClient(long id) throws Exception {
 		clientDao.supprimerClient(id);
 	}
 
@@ -61,19 +61,47 @@ public class ServiceImpl implements IService, Serializable {
 		modifierClient(retrouverClient(compteDestinataire));
 		return false;
 	}
-	
+
 	private Client retrouverClient(Compte compte) {
 		Client client = new Client();
-		if("model.CompteCourant".equals(compte.getClass().getName())) {
+		if ("model.CompteCourant".equals(compte.getClass().getName())) {
 			client = ((CompteCourant) compte).getClient();
 		}
-		if("model.CompteEpargne".equals(compte.getClass().getName())) {
+		if ("model.CompteEpargne".equals(compte.getClass().getName())) {
 			client = ((CompteEpargne) compte).getClient();
 		}
 		return client;
 	}
 
-	
-	
+	@Override
+	public List<Compte> afficherComptes(long clientId) {
+		Client client;
+		List<Compte> comptes = new ArrayList<>();
+		try {
+			client = clientDao.afficherClient(clientId);
+			comptes.add(client.getCompteCourant());
+			comptes.add(client.getCompteEpargne());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return comptes;
+	}
+
+	@Override
+	public Compte afficherCompteEpargne(long clientId) throws Exception {
+		Client client;
+		client = clientDao.afficherClient(clientId);
+		Compte compte = client.getCompteEpargne();
+		return compte;
+	}
+
+	@Override
+	public Compte afficherCompteCourant(long clientId) throws Exception {
+		Client client;
+		client = clientDao.afficherClient(clientId);
+		Compte compte = client.getCompteCourant();
+		return compte;
+	}
 
 }

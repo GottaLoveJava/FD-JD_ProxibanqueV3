@@ -14,6 +14,6 @@ public interface IDaoClient {
 
 	boolean modifierClient(Client client) throws Exception;
 
-	boolean supprimerClient(int clientId) throws Exception;
+	boolean supprimerClient(long clientId) throws Exception;
 
 }
