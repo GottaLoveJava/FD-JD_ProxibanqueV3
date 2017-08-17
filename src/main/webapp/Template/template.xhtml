@@ -11,7 +11,7 @@
 </h:head>
 <h:body>
 	<ui:insert name="retourAccueil">
-		<b:navBar brand="Proxibanque" brandHref="index.xhtml" inverse="true">
+		<b:navBar brand="Proxibanque" brandHref="liste-clients.xhtml" inverse="true">
 
 			<!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
 			<b:navbarLinks pull="right">
@@ -21,7 +21,7 @@
 
 					<h:form
 						class="navbar-form navbar-left hidden-md hidden-sm hidden-xs">
-						<b:commandButton value="Déconnexion" ajax="true" look="primary" />
+						<b:commandButton value="Déconnexion" action="#{userControleur.logOut}" ajax="true" look="primary" />
 					</h:form>
 				</b:navbarLinks>
 			</b:navbarLinks>
@@ -51,7 +51,7 @@
 		</b:tabView>
 	</ui:insert>
 	<ui:insert name="footer">
-		<b:navBar brand="Proxibanque" brandHref="index.xhtml" inverse="true"
+		<b:navBar brand="Proxibanque" brandHref="liste-clients.xhtml" inverse="true"
 			position="bottom" />
 	</ui:insert>
 </h:body>
