@@ -16,6 +16,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import model.Client;
+import model.Compte;
 import service.IService;
 
 @Named
@@ -26,12 +27,16 @@ public class ClientControleur implements Serializable {
 
 	private List<Client> clients;
 	private Logger logger = Logger.getLogger(getClass().getName());
+	private Compte compteInitial = null;
+	private Compte compteDestinataire = null;
+	private List<Compte> listeComptes = new ArrayList<>();
 
 	@Inject
 	private IService service;
 
 	public ClientControleur() throws Exception {
 		clients = new ArrayList<>();
+		chargerClients();
 	}
 
 	@PostConstruct
