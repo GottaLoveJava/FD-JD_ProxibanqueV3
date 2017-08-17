@@ -3,15 +3,18 @@ package model;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
+@ManagedBean
 @SessionScoped
-@Table(name="client")
+@Table(name = "client")
 public class Client extends Personne implements Serializable {
 
 	private static final long serialVersionUID = 4075611119300579731L;
@@ -37,7 +40,7 @@ public class Client extends Personne implements Serializable {
 	}
 
 	public Client() {
-		this.isEntreprise=false;
+		this.isEntreprise = false;
 	}
 
 	public String getAdresse() {

@@ -14,6 +14,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import model.Client;
 import model.Compte;
@@ -204,6 +205,7 @@ public class ClientControleur implements Serializable {
 		return idCompteInitial;
 	}
 
+
 	public void setIdCompteInitial(Long idCompteInitial) {
 		this.idCompteInitial = idCompteInitial;
 	}
@@ -215,4 +217,17 @@ public class ClientControleur implements Serializable {
 	public void setIdCompteDestinataire(Long idCompteDestinataire) {
 		this.idCompteDestinataire = idCompteDestinataire;
 	}
+	
+	public String logout() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		session.removeAttribute("loggedUser");
+		return "login.html";
+	}
+
+
+	public void effectuerVirement(Compte compteInitial, Compte compteDestinataire, double montant) throws Exception {
+		service.effectuerVirement(compteInitial, compteDestinataire, montant);
+
+	}
+
 }
