@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@ManagedBean
+@Named
 @Table(name="client")
 public class Client extends Personne implements Serializable {
 
