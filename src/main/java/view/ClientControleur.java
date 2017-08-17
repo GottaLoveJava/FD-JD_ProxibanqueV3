@@ -86,8 +86,8 @@ public class ClientControleur implements Serializable {
 		return "liste-clients?faces-redirect=true";
 	}
 
-	public String loadClient(long idClient) {
-
+	public String chargerClient(long idClient) {
+	
 		logger.info("Chargement du client numéro : " + idClient);
 		try {
 			Client client = service.afficherClient(idClient);
@@ -99,7 +99,7 @@ public class ClientControleur implements Serializable {
 			afficherErreur(exc);
 			return null;
 		}
-
+	
 		return "modifier-client-form.xhtml";
 	}
 
@@ -234,11 +234,6 @@ public class ClientControleur implements Serializable {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		session.removeAttribute("loggedUser");
 		return "login.html";
-	}
-
-	public void effectuerVirement(Compte compteInitial, Compte compteDestinataire, double montant) throws Exception {
-		service.effectuerVirement(compteInitial, compteDestinataire, montant);
-
 	}
 
 }
