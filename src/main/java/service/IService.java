@@ -17,6 +17,6 @@ public interface IService {
 
 	void supprimerClient(int id) throws Exception;
 
-	boolean effectuerVirement(Compte compteInitial, Compte compteDestinataire, double montant);
+	boolean effectuerVirement(Compte compteInitial, Compte compteDestinataire, double montant) throws Exception;
 
 }

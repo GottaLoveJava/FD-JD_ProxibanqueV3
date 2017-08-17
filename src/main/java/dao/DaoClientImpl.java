@@ -72,7 +72,7 @@ public class DaoClientImpl implements IDaoClient {
 
 	@Override
 	public Client afficherClient(int clientId) throws Exception {
-		Client client = new Client();
+		Client client = null;
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
 		try {
