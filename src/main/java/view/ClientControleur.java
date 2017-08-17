@@ -49,7 +49,7 @@ public class ClientControleur implements Serializable {
 		try {
 			clients = service.listeClients();
 		} catch (Exception exc) {
-			logger.log(Level.SEVERE, "Error loading clients", exc);
+			logger.log(Level.SEVERE, "Erreur de chargement", exc);
 			afficherErreur(exc);
 		}
 	}
