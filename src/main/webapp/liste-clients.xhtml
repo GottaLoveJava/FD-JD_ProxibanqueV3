@@ -24,6 +24,7 @@
 		<div id="header">
 			<h2>Proxibanque</h2>
 			Bienvenue
+			<h:outputText value="#{request.remoteUser}" />
 		</div>
 	</div>
 
@@ -42,7 +43,29 @@
 					styleClass="demo-table" headerClass="demo-table-header"
 					rowClasses="demo-table-odd-row,demo-table-even-row">
 
-		
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Prénom</f:facet>
+
+						<!--  the value for each row -->
+						#{tempClient.prenom}
+				</h:column>
+
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Nom</f:facet>
+
+						<!--  the value for each row -->
+						#{tempClient.nom}
+				</h:column>
+
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Email</f:facet>
+
+						<!--  the value for each row -->
+						#{tempClient.email}
+				</h:column>
 						<h:column>
 						<!-- the column header -->
 						<f:facet name="header">Compte Epargne</f:facet>
@@ -61,11 +84,8 @@
 						<f:facet name="header">Action</f:facet>
 
 						<h:commandLink value="Comptes"
-							action="#{clientControleur.afficherComptes(tempClient.id)}" />
+							action="liste-comptes" />
 
-						<!--  the value for each row -->
-						<h:commandLink value="Update"
-							action="#{clientControleur.modifierClient(tempClient.id)}" />
 					|
 
 					<h:commandLink value="Delete"
