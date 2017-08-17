@@ -30,7 +30,7 @@ public class CompteCourant extends Compte implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Découvert :" + limiteDecouvert + ", solde : " + getSolde() + "euros";
+		return "Compte n° : "+this.getId()+" / Propriétaire : "+this.client.getNom()+" / Solde : "+ this.getSolde();
 	}
 	
 

@@ -36,25 +36,19 @@ public class ClientControleur implements Serializable {
 
 	public ClientControleur() throws Exception {
 		clients = new ArrayList<>();
-		chargerClients();
-
-		for (Client client : clients) {
-			try {
-				listeComptes.add(client.getCompteCourant());
-			} catch (NullPointerException e) {
-				e.printStackTrace();
-			}
-			try {
-				listeComptes.add(client.getCompteEpargne());
-			} catch (NullPointerException e) {
-				e.printStackTrace();
-			}
-		}
-
 	}
 
 	@PostConstruct
-	public void initService() {
+	public void initService() throws Exception {
+		chargerClients();
+		for (Client client : clients) {
+			if (null != client.getCompteCourant()) {
+				listeComptes.add(client.getCompteCourant());
+			}
+			if(null!=client.getCompteEpargne()) {
+				listeComptes.add(client.getCompteEpargne());
+			}
+		}
 		System.out.println(this.getClass().getName() + "je suis construit ! " + service);
 	}
 
@@ -173,5 +167,7 @@ public class ClientControleur implements Serializable {
 		FacesMessage message = new FacesMessage("Error: " + exc.getMessage());
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
-
+	public void effectuerVirement(Compte compteInitial, Compte compteDestinataire, double montant) throws Exception {
+		service.effectuerVirement(compteInitial, compteDestinataire, montant);
+	}
 }

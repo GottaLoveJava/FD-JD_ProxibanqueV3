@@ -35,7 +35,7 @@ public class CompteEpargne extends Compte implements Serializable {
 
 	@Override
 	public String toString() {
-		return "CompteEpargne [tauxRemuneration=" + tauxRemuneration + ", getSolde()=" + getSolde() + "]";
+		return "Compte n° : "+this.getId()+" / Propriétaire : "+this.client.getNom()+" / Solde : "+ this.getSolde();
 	}
 
 }
