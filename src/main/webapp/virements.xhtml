@@ -72,7 +72,9 @@
 
 
 		</h:form>
-
+		<p>
+			<h:outputLink value="liste-clients.xhtml">Retour à la liste des clients</h:outputLink>
+		</p>
 		<div>
 			<h4>Liste des comptes disponibles</h4>
 			<h:dataTable value="#{clientControleur.listeComptes}" var="c">
@@ -99,10 +101,6 @@
 		</div>
 
 		<div style="clear: both;"></div>
-
-		<p>
-			<h:outputLink value="liste-clients.xhtml">Retour à la liste des clients</h:outputLink>
-		</p>
 
 	</div>
 </h:body>
