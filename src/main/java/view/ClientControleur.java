@@ -95,6 +95,23 @@ public class ClientControleur implements Serializable {
 
 		return "modifier-client-form.xhtml";
 	}
+	
+	public String compteClient(int clientId) {
+
+		logger.info("Chargement du client numéro : " + clientId);
+		try {
+			Client client = service.afficherClient(clientId);
+			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+			Map<String, Object> requestMap = externalContext.getRequestMap();
+			requestMap.put("client", client);
+		} catch (Exception exc) {
+			logger.log(Level.SEVERE, "Error loading client id:" + clientId, exc);
+			afficherErreur(exc);
+			return null;
+		}
+
+		return "liste-comptes.xhtml";
+	}
 
 	public String modifierClient(long idClient) throws Exception {
 		Client client = service.afficherClient(idClient);

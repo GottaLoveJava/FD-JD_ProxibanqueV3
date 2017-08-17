@@ -15,27 +15,41 @@
 </h:head>
 
 <h:body>
-<h:form>
-<h:dataTable >
 
-						<h:column>
-						<!-- the column header -->
-						<f:facet name="header">Compte Epargne</f:facet>
+	<div id="wrapper">
+		<div id="header">
+			<h2></h2>
+		</div>
+	</div>
 
-						<!--  the value for each row -->
-						#{tempClient.compteEpargne}
-				</h:column>	<h:column>
-						<!-- the column header -->
-						<f:facet name="header">Compte Courant</f:facet>
+	<div id="container">
+		<h3>Liste des comptes</h3>
 
-						<!--  the value for each row -->
-						#{tempClient.compteCourant}
-				</h:column>
+		<h:messages globalOnly="true" />
 
-				</h:dataTable>
-		<!-- creer un lien pour se delogger -->
-			</h:form>
+		<h:form id="form" style="margin-top: 10px;">
+			<h:panelGrid columns="2">
 
+				<h:outputLabel>Compte Epargne:</h:outputLabel>
+				<h:outputText value="#{client.compteEpargne}" id="ce" />
 
+				<h:outputLabel>Compte Courant:</h:outputLabel>
+				<h:outputText value="#{client.compteCourant}" id="cc" />
+
+				<h:inputHidden value="#{client.id}" />
+
+				<h:commandButton value="Valider" styleClass="save"
+					action="#{clientControleur.modifierClient(client)}" />
+
+			</h:panelGrid>
+		</h:form>
+
+		<div style="clear: both;"></div>
+
+		<p>
+			<h:outputLink value="liste-clients.xhtml">Retour à la liste</h:outputLink>
+		</p>
+
+	</div>
 </h:body>
 </html>

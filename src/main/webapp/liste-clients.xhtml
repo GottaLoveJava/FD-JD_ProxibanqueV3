@@ -84,12 +84,14 @@
 						<f:facet name="header">Action</f:facet>
 
 						<h:commandLink value="Comptes"
-							action="liste-comptes" />
+							action="#{clientControleur.compteClient(tempClient.id)}"/>
 
-					|
+					<h:commandLink value="Mettre à jour le client"
+							action="#{clientControleur.loadClient(tempClient.id)}" />
+					
 
 					<h:commandLink value="Delete"
-							onclick="if (!confirm('Are you sure you want to delete this student?')) return false"
+							onclick="if (!confirm('Voulez-vous supprimer ce client?')) return false"
 							action="#{clientControleur.supprimerClient(tempClient.id)}" />
 
 					</h:column>
