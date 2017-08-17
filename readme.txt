@@ -16,7 +16,7 @@ Version : version 3
 *****      	     Livrables  	        *****
 	************************************
 
-	Pour récupérer le projet, veuillez cloner avec git le repository "git@github.com:GottaLoveJava/FD-JD_ProxibanqueV3.git"
+	Pour récupérer le projet, veuillez cloner avec git le repository "https://github.com/GottaLoveJava/FD-JD_ProxibanqueV3.git"
 	
 Les documents livrés sont :
 
