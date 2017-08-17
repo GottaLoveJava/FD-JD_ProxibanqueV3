@@ -20,7 +20,7 @@ import service.IService;
 
 @Named
 @SessionScoped
-public class ClientControleur implements Serializable{
+public class ClientControleur implements Serializable {
 
 	private static final long serialVersionUID = 3774463683041113840L;
 
@@ -32,117 +32,87 @@ public class ClientControleur implements Serializable{
 
 	public ClientControleur() throws Exception {
 		clients = new ArrayList<>();
-	
 	}
 
 	@PostConstruct
 	public void initService() {
-		System.out.println(this.getClass().getName()+"je suis construit ! "+service);
+		System.out.println(this.getClass().getName() + "je suis construit ! " + service);
 	}
 
 	public List<Client> getClients() {
 		return clients;
 	}
 
-	public void loadclients() {
-
-		logger.info("Loading clients");
-
+	public void chargerClients() {
+		logger.info("Chargement clients");
 		clients.clear();
-
 		try {
-
 			clients = service.listeClients();
-
 		} catch (Exception exc) {
-			logger.log(Level.SEVERE, "Error loading clients", exc);
-			addErrorMessage(exc);
+			logger.log(Level.SEVERE, "Erreur de chargement", exc);
+			afficherErreur(exc);
 		}
 	}
 
-	public String addClient(Client client) {
-
-		logger.info("Adding client: " + client);
-
+	public String ajouterClient(Client client) {
+		logger.info("Ajout du client: " + client);
 		try {
 			service.ajouterClient(client);
-
 		} catch (Exception exc) {
-			logger.log(Level.SEVERE, "Error adding clients", exc);
-			addErrorMessage(exc);
-
+			logger.log(Level.SEVERE, "Erreur pendant l'ajout", exc);
+			afficherErreur(exc);
 			return null;
 		}
-
 		return "liste-clients?faces-redirect=true";
 	}
 
 	public String loadClient(int clientId) {
 
 		logger.info("Chargement du client numéro : " + clientId);
-
 		try {
 			Client client = service.afficherClient(clientId);
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-
 			Map<String, Object> requestMap = externalContext.getRequestMap();
 			requestMap.put("client", client);
-
 		} catch (Exception exc) {
 			logger.log(Level.SEVERE, "Error loading client id:" + clientId, exc);
-			addErrorMessage(exc);
-
+			afficherErreur(exc);
 			return null;
 		}
 
 		return "modifier-client-form.xhtml";
 	}
 
-	public String updateClient(Client client) {
+	public String modifierClient(Client client) {
 
 		logger.info("Modification client: " + client);
-
 		try {
-
-			// update client in the database
 			service.modifierClient(client);
-
 		} catch (Exception exc) {
-			// send this to server logs
 			logger.log(Level.SEVERE, "Error updating client: " + client, exc);
-
-			// add error message for JSF page
-			addErrorMessage(exc);
-
+			afficherErreur(exc);
 			return null;
 		}
 
-		return "list-clients?faces-redirect=true";
+		return "liste-clients?faces-redirect=true";
 	}
 
-	public String deleteClient(int clientId) {
-
+	public String supprimerClient(int clientId) {
 		logger.info("Deleting client id: " + clientId);
 
 		try {
-
-			// delete the client from the database
 			service.supprimerClient(clientId);
 
 		} catch (Exception exc) {
-			// send this to server logs
 			logger.log(Level.SEVERE, "Error deleting client id: " + clientId, exc);
-
-			// add error message for JSF page
-			addErrorMessage(exc);
-
+			afficherErreur(exc);
 			return null;
 		}
 
-		return "list-clients";
+		return "liste-clients";
 	}
 
-	private void addErrorMessage(Exception exc) {
+	private void afficherErreur(Exception exc) {
 		FacesMessage message = new FacesMessage("Error: " + exc.getMessage());
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
