@@ -6,12 +6,38 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:b="http://bootsfaces.net/ui">
 
-<ui:composition template="/Template/template.xhtml">
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-	<ui:define name="barreNavigation">
-		
-	</ui:define>
+	<title>Liste des comptes</title>
 
-</ui:composition>
+</h:head>
 
+<h:body>
+<h:form>
+<h:dataTable value="#{clientControleur.clients}" var="tempClient"
+					styleClass="demo-table" headerClass="demo-table-header"
+					rowClasses="demo-table-odd-row,demo-table-even-row">
+
+						<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Compte Epargne</f:facet>
+
+						<!--  the value for each row -->
+						#{tempClient.compteEpargne}
+				</h:column>	<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Compte Courant</f:facet>
+
+						<!--  the value for each row -->
+						#{tempClient.compteCourant}
+				</h:column>
+
+				</h:dataTable>
+		<!-- creer un lien pour se delogger -->
+			</h:form>
+
+
+</h:body>
 </html>

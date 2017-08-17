@@ -103,7 +103,7 @@ public class ClientControleur implements Serializable {
 		return "liste-clients?faces-redirect=true";
 	}
 
-	public String supprimerClient(int clientId) {
+	public String supprimerClient(long clientId) {
 		logger.info("Deleting client id: " + clientId);
 
 		try {
@@ -116,6 +116,19 @@ public class ClientControleur implements Serializable {
 		}
 
 		return "liste-clients";
+	}
+	
+	public List<Compte> afficherComptes(long clientId) {
+		return service.afficherComptes(clientId);
+
+	}
+	
+	public Compte afficherCompteEpargne(long clientId) throws Exception {
+		return service.afficherCompteEpargne(clientId);
+	}
+
+	public Compte afficherCompteCourant(long clientId) throws Exception {
+		return service.afficherCompteCourant(clientId);
 	}
 
 	private void afficherErreur(Exception exc) {

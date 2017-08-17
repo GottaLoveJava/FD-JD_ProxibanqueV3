@@ -28,6 +28,10 @@ public class CompteCourant extends Compte implements Serializable{
 	public void setClient(Client client) {
 		this.client = client;
 	}
+	@Override
+	public String toString() {
+		return "Découvert :" + limiteDecouvert + ", solde : " + getSolde() + "euros";
+	}
 	
 
 }

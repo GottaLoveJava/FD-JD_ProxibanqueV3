@@ -33,4 +33,9 @@ public class CompteEpargne extends Compte implements Serializable {
 		this.client = client;
 	}
 
+	@Override
+	public String toString() {
+		return "CompteEpargne [tauxRemuneration=" + tauxRemuneration + ", getSolde()=" + getSolde() + "]";
+	}
+
 }

@@ -15,8 +15,14 @@ public interface IService {
 
 	void modifierClient(Client client) throws Exception;
 
-	void supprimerClient(int id) throws Exception;
+	void supprimerClient(long clientId) throws Exception;
 
 	boolean effectuerVirement(Compte compteInitial, Compte compteDestinataire, double montant) throws Exception;
+
+	List<Compte> afficherComptes(long clientId);
+
+	Compte afficherCompteEpargne(long clientId) throws Exception;
+
+	Compte afficherCompteCourant(long clientId) throws Exception;
 
 }
