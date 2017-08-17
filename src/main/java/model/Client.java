@@ -11,11 +11,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
+ * Cette classe est responsable de la modélisation d'un client.
  * 
  * @author Francois Destremau, Jean Deglaire
  * @version v3.0
  *
- *          Cette classe est responsable de la modélisation d'un client.
+ *          
  */
 @Entity
 @ManagedBean

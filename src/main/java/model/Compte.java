@@ -13,12 +13,14 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 /**
- * * @author Francois Destremau, Jean Deglaire
+ * Cette classe est responsable de la modélisation des Comptes bancaires des
+ * clients.
+ * 
+ * @author Francois Destremau, Jean Deglaire
  * 
  * @version v3.0
  *
- *          Cette classe est responsable de la modélisation des Comptes
- *          bancaires des clients.
+ * 
  *
  */
 @Entity

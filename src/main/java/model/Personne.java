@@ -11,10 +11,12 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 /**
+ * Cette classe est responsable de la modélisation d'une Personne (Client uniquement dans cette version)
+ * 
  * @author Francois Destremau, Jean Deglaire
  * @version v3.0
  *
- *Cette classe est responsable de la modélisation d'une Personne (Client uniquement dans cette version)
+ *
  *
  */
 @Entity

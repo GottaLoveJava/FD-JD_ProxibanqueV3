@@ -8,10 +8,12 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
+ * Cette classe est responsable de la modélisation d'un compte Epargne
+ * 
  * @author Francois Destremau, Jean Deglaire
  * @version v3.0
  *
- *          Cette classe est responsable de la modélisation d'un compte Epargne
+ *          
  *
  */
 @Entity

@@ -13,9 +13,11 @@ import javax.persistence.TypedQuery;
 
 import model.Client;
 /**
+ * Classe implémentant toutes les méthodes de la dao client
+ * 
  * @author François Destremau, Jean Deglaire
  * @version v3.0
- * Classe implémentant toutes les méthodes de la dao client
+ * 
  */
 @Named
 @ApplicationScoped

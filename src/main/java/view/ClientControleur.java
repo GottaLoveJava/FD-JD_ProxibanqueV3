@@ -21,8 +21,10 @@ import model.Compte;
 import service.IService;
 
 /**
+ * Cette classe permet de gérer l'ensemble des vues
+ * 
  * @author François Destremau, Jean Deglaire
- * @version v3.0 Cette classe permet de gérer l'ensemble des vues
+ * @version v3.0 
  *
  */
 @Named
