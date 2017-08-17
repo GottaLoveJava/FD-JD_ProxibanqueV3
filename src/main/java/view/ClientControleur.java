@@ -28,6 +28,9 @@ public class ClientControleur implements Serializable {
 
 	private List<Client> clients;
 	private Logger logger = Logger.getLogger(getClass().getName());
+	private Compte compteInitial = null;
+	private Compte compteDestinataire = null;
+	private List<Compte> listeComptes = new ArrayList<>();
 
 	@Inject
 	private IService service;
@@ -37,7 +40,16 @@ public class ClientControleur implements Serializable {
 	}
 
 	@PostConstruct
-	public void initService() {
+	public void initService() throws Exception {
+		chargerClients();
+		for (Client client : clients) {
+			if (null != client.getCompteCourant()) {
+				listeComptes.add(client.getCompteCourant());
+			}
+			if(null!=client.getCompteEpargne()) {
+				listeComptes.add(client.getCompteEpargne());
+			}
+		}
 		System.out.println(this.getClass().getName() + "je suis construit ! " + service);
 	}
 
@@ -131,12 +143,12 @@ public class ClientControleur implements Serializable {
 
 		return "liste-clients";
 	}
-	
+
 	public List<Compte> afficherComptes(long clientId) {
 		return service.afficherComptes(clientId);
 
 	}
-	
+
 	public Compte afficherCompteEpargne(long clientId) throws Exception {
 		return service.afficherCompteEpargne(clientId);
 	}
@@ -145,15 +157,45 @@ public class ClientControleur implements Serializable {
 		return service.afficherCompteCourant(clientId);
 	}
 
+	public Compte getCompteInitial() {
+		return compteInitial;
+	}
+
+	public void setCompteInitial(Compte compteInitial) {
+		this.compteInitial = compteInitial;
+	}
+
+	public Compte getCompteDestinataire() {
+		return compteDestinataire;
+	}
+
+	public void setCompteDestinataire(Compte compteDestinataire) {
+		this.compteDestinataire = compteDestinataire;
+	}
+
+	public List<Compte> getListeComptes() {
+		return listeComptes;
+	}
+
+	public void setListeComptes(List<Compte> listeComptes) {
+		this.listeComptes = listeComptes;
+	}
+
 	private void afficherErreur(Exception exc) {
 		FacesMessage message = new FacesMessage("Error: " + exc.getMessage());
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
+
 	
 	public String logout() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		session.removeAttribute("loggedUser");
 		return "login.html";
+	}
+
+
+	public void effectuerVirement(Compte compteInitial, Compte compteDestinataire, double montant) throws Exception {
+		service.effectuerVirement(compteInitial, compteDestinataire, montant);
 	}
 
 }

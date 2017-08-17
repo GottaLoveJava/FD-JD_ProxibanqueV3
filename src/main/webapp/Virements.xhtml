@@ -10,7 +10,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 	<title>Effectuer un virement</title>
-	
+
 </h:head>
 
 <h:body>
@@ -20,30 +20,43 @@
 			<h2>Cher conseiller</h2>
 		</div>
 	</div>
-	
+
+	<div></div>
+
 	<div id="container">
 		<h3>Effectuer un virement :</h3>
 
 		<h:messages globalOnly="true" />
 
-		<h:form id="form" style="margin-top: 10px;" >
-			<h:panelGrid columns="3">
+		<h:form id="form" style="margin-top: 10px;">
+			<h4>Compte Provisionnaire : </h4>
 			
-		<h:selectOneMenu value="#{virementControleur.compteInitial}" >
-			<f:selectItems value = "#{virementControleur.listeComptes}"/>
-		</h:selectOneMenu>
-		
-		<h:selectOneMenu value="#{virementControleur.compteInitial}" >
-			<f:selectItems value = "#{virementControleur.listeComptes}"/>
-		</h:selectOneMenu>
+				<h:selectOneMenu value="#{clientControleur.compteInitial}" id="listInit">
+					<f:selectItems value="#{clientControleur.listeComptes}" var="initial" />
+				</h:selectOneMenu>
+				
+				<h4>Compte Destinataire : </h4>
+				
+				<h:selectOneMenu value="#{clientControleur.compteDestinataire}" id="listDest">
+					<f:selectItems value="#{clientControleur.listeComptes}" var="dest"></f:selectItems>
+				</h:selectOneMenu>
+				<h4>Montant à transférer</h4>
+				<h:inputText id="montant" value="0" label="montant"><f:validateDoubleRange minimum="0"/> </h:inputText><h:message for="montant"></h:message>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<h:commandButton value="Effectuer le virement" action="#{clientControleur.effectuerVirement(initial, dest, montant)}"></h:commandButton>
+				
 			
-			</h:panelGrid>
 		</h:form>
 
 		<div style="clear: both;"></div>
 
-		<p><h:outputLink value="liste-clients.xhtml">Retour à la liste des clients</h:outputLink></p>
+		<p>
+			<h:outputLink value="liste-clients.xhtml">Retour à la liste des clients</h:outputLink>
+		</p>
 
-	</div>	
+	</div>
 </h:body>
 </html>

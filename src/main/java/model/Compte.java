@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 
+import javax.inject.Named;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import javax.persistence.InheritanceType;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE_COMPTE")
 @DiscriminatorValue("GENERIQUE")
+@Named
 public class Compte implements Serializable{
 	
 	private static final long serialVersionUID = -5720932766072858902L;
