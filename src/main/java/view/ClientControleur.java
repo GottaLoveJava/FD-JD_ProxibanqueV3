@@ -83,7 +83,8 @@ public class ClientControleur implements Serializable {
 		return "modifier-client-form.xhtml";
 	}
 
-	public String modifierClient(Client client) {
+	public String modifierClient(long idClient) throws Exception {
+		Client client = service.afficherClient(idClient);
 
 		logger.info("Modification client: " + client);
 		try {

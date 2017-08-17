@@ -10,7 +10,7 @@ public interface IDaoClient {
 
 	boolean ajouterClient(Client client) throws Exception;
 
-	Client afficherClient(int clientId) throws Exception;
+	Client afficherClient(long clientId) throws Exception;
 
 	boolean modifierClient(Client client) throws Exception;
 

@@ -11,7 +11,7 @@ public interface IService {
 
 	void ajouterClient(Client client) throws Exception;
 
-	Client afficherClient(int id) throws Exception;
+	Client afficherClient(long id) throws Exception;
 
 	void modifierClient(Client client) throws Exception;
 

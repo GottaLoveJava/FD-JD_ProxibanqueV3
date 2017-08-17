@@ -36,7 +36,7 @@ public class ServiceImpl implements IService, Serializable {
 	}
 
 	@Override
-	public Client afficherClient(int clientId) throws Exception {
+	public Client afficherClient(long clientId) throws Exception {
 		Client client = clientDao.afficherClient(clientId);
 		return client;
 	}

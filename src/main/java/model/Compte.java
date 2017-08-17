@@ -20,12 +20,12 @@ public class Compte implements Serializable{
 	private static final long serialVersionUID = -5720932766072858902L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private long id;
 	private double solde;
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public double getSolde() {
