@@ -27,9 +27,10 @@ public class ClientControleur implements Serializable {
 
 	private List<Client> clients;
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private Compte compteInitial = null;
-	private Compte compteDestinataire = null;
 	private List<Compte> listeComptes = new ArrayList<>();
+	private double montant;
+	private Long idCompteInitial;
+	private Long idCompteDestinataire;
 
 	@Inject
 	private IService service;
@@ -45,7 +46,7 @@ public class ClientControleur implements Serializable {
 			if (null != client.getCompteCourant()) {
 				listeComptes.add(client.getCompteCourant());
 			}
-			if(null!=client.getCompteEpargne()) {
+			if (null != client.getCompteEpargne()) {
 				listeComptes.add(client.getCompteEpargne());
 			}
 		}
@@ -95,7 +96,7 @@ public class ClientControleur implements Serializable {
 
 		return "modifier-client-form.xhtml";
 	}
-	
+
 	public String compteClient(int clientId) {
 
 		logger.info("Chargement du client numéro : " + clientId);
@@ -156,22 +157,6 @@ public class ClientControleur implements Serializable {
 		return service.afficherCompteCourant(clientId);
 	}
 
-	public Compte getCompteInitial() {
-		return compteInitial;
-	}
-
-	public void setCompteInitial(Compte compteInitial) {
-		this.compteInitial = compteInitial;
-	}
-
-	public Compte getCompteDestinataire() {
-		return compteDestinataire;
-	}
-
-	public void setCompteDestinataire(Compte compteDestinataire) {
-		this.compteDestinataire = compteDestinataire;
-	}
-
 	public List<Compte> getListeComptes() {
 		return listeComptes;
 	}
@@ -184,7 +169,50 @@ public class ClientControleur implements Serializable {
 		FacesMessage message = new FacesMessage("Error: " + exc.getMessage());
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
-	public void effectuerVirement(Compte compteInitial, Compte compteDestinataire, double montant) throws Exception {
-		service.effectuerVirement(compteInitial, compteDestinataire, montant);
+
+	public void effectuerVirement() throws Exception {
+		Compte compteInitial = null;
+		Compte compteDestinataire = null;
+		try {
+			System.out.println("init : " + idCompteInitial + " dest : " + idCompteDestinataire + " montant : " + montant);
+			for (Compte compte : listeComptes) {
+				if (compte.getId() == idCompteInitial) {
+					compteInitial = compte;
+				}
+				if (compte.getId() == idCompteDestinataire) {
+					compteDestinataire = compte;
+				}
+			}
+			System.out.println(compteInitial.getId());
+			System.out.println(compteDestinataire.getId());
+			
+			service.effectuerVirement(compteInitial, compteDestinataire, montant);
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public double getMontant() {
+		return montant;
+	}
+
+	public void setMontant(double montant) {
+		this.montant = montant;
+	}
+
+	public Long getIdCompteInitial() {
+		return idCompteInitial;
+	}
+
+	public void setIdCompteInitial(Long idCompteInitial) {
+		this.idCompteInitial = idCompteInitial;
+	}
+
+	public Long getIdCompteDestinataire() {
+		return idCompteDestinataire;
+	}
+
+	public void setIdCompteDestinataire(Long idCompteDestinataire) {
+		this.idCompteDestinataire = idCompteDestinataire;
 	}
 }
