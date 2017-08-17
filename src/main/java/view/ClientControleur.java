@@ -120,9 +120,7 @@ public class ClientControleur implements Serializable {
 		return "liste-comptes.xhtml";
 	}
 
-	public String modifierClient(long idClient) throws Exception {
-		Client client = service.afficherClient(idClient);
-
+	public String modifierClient(Client client) throws Exception {
 		logger.info("Modification client: " + client);
 		try {
 			service.modifierClient(client);
