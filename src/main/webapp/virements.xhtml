@@ -28,7 +28,7 @@
 
 		<h:messages globalOnly="true" />
 
-		<b:form id="loginForm" style="margin-top: 10px;">
+		<b:form inline="true" id="loginForm" style="margin-top: 10px;">
 
 			<b:inputText id="compteInitial"
 				value="#{clientControleur.idCompteInitial}"
@@ -37,12 +37,13 @@
 				converterMessage="Veuillez saisir un numéro de compte"
 				validatorMessage="Veuillez saisir un numéro de compte existant (cf. Liste en bas de page)"
 				>
+
 				<f:validateLongRange minimum="0" />
 			</b:inputText>
 
 
 
-			<h:message for="compteInitial"></h:message>
+
 
 
 
@@ -56,7 +57,9 @@
 			</b:inputText>
 
 
-			<h:message for="compteDestinataire"></h:message>
+
+
+
 
 
 
@@ -67,16 +70,20 @@
 				converterMessage="Veuillez saisir un montant à transférer">
 				<f:validateDoubleRange minimum="0" />
 			</b:inputText>
+
+			<br />			<br />
+			<h:message for="compteInitial" errorStyle="color:red"></h:message>
+			<br />
+			<h:message for="compteDestinataire" errorStyle="color:red"></h:message>
+			<br />
 			<h:message for="montant"></h:message>
-			<br />
-			<br />
-			<br />
 			<br />
 			<h:commandButton value="Effectuer le virement"
 				action="#{clientControleur.effectuerVirement}"></h:commandButton>
 
 
 		</b:form>
+
 		<p>
 			<h:outputLink value="liste-clients.xhtml">Retour à la liste des clients</h:outputLink>
 		</p>

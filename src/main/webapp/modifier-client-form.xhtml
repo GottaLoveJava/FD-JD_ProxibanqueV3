@@ -29,77 +29,81 @@
 
 		<h:messages globalOnly="true" />
 
-		<h:form id="form" style="margin-top: 10px;">
-			<h:panelGrid columns="3">
+		<b:form inline="true" id="loginForm" style="margin-top: 10px">
+			<b:panelGrid style="width:600px;" columns="3">
 
 				<h:outputLabel>Prénom:</h:outputLabel>
-				<h:inputText value="#{client.prenom}" id="prenom" required="true"
+				<b:inputText value="#{client.prenom}" id="prenom" required="true"
 					requiredMessage="Veuillez entrer votre prénom."
 					validatorMessage="Votre prénom ne doit pas contenir de numéro ni de caractères spéciaux.">
 					<f:validateRegex
 						pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
-				</h:inputText>
+				</b:inputText>
+
 				<h:message for="prenom"></h:message>
 
 
 				<h:outputLabel>Nom:</h:outputLabel>
-				<h:inputText value="#{client.nom}" id="nom" required="true"
+				<b:inputText value="#{client.nom}" id="nom" required="true"
 					requiredMessage="Veuillez entrer votre nom."
 					validatorMessage="Votre nom ne doit pas contenir de numéro ni de caractères spéciaux.">
 					<f:validateRegex
 						pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
-				</h:inputText>
+				</b:inputText>
+
 				<h:message for="nom" />
 
 				<h:outputLabel>Email:</h:outputLabel>
-				<h:inputText value="#{client.email}" id="email" required="true"
+				<b:inputText value="#{client.email}" id="email" required="true"
 					requiredMessage="Veuillez saisir votre email."
 					validatorMessage="Votre email doit être du type : toto@toto.fr">
 					<f:validateRegex
 						pattern="^([_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{1,6}))?$" />
-				</h:inputText>
+				</b:inputText>
 				<h:message for="email" />
 
 				<h:outputLabel>Adresse:</h:outputLabel>
-				<h:inputText value="#{client.adresse}" id="adresse" required="true"
+
+				<b:inputText value="#{client.adresse}" id="adresse" required="true"
 					requiredMessage="Veuillez saisir une adresse."
 					validatorMessage="L'adresse ne peut pas contenir de caractères spéciaux.">
 					<f:validateRegex
 						pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
-				</h:inputText>
+				</b:inputText>
 				<h:message for="adresse" />
 
 				<h:outputLabel>Ville:</h:outputLabel>
-				<h:inputText value="#{client.ville}" id="ville" required="true"
+				<b:inputText value="#{client.ville}" id="ville" required="true"
 					requiredMessage="Veuillez saisir la ville de résidence."
 					validatorMessage="La ville ne doit pas contenir de caractères spéciaux">
 					<f:validateRegex
 						pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
-				</h:inputText>
+				</b:inputText>
 				<h:message for="ville" />
 
 				<h:outputLabel>Téléphone:</h:outputLabel>
-				<h:inputText value="#{client.telephone}" id="tel" required="true"
+				<b:inputText value="#{client.telephone}" id="tel" required="true"
 					requiredMessage="Vous devez saisir un numéro de téléphone."
 					validatorMessage="Votre numéro doit contenir 10 chiffres.">
 					<f:validateRegex pattern="^[0-9]{10,10}$" />
-				</h:inputText>
+				</b:inputText>
 				<h:message for="tel" />
 
 				<h:outputLabel>Code Postal:</h:outputLabel>
-				<h:inputText value="#{client.codePostal}" id="codePostal"
+
+				<b:inputText value="#{client.codePostal}" id="codePostal"
 					required="true" requiredMessage="Vous devez saisir un code postal."
 					validatorMessage="Votre code postal doit être composé de 5 chiffres">
 					<f:validateRegex pattern="^[0-9]{5,5}$" />
-				</h:inputText>
+				</b:inputText>
+
 				<h:message for="codePostal" />
 
-				<h:outputLabel />
 				<h:commandButton value="Valider" styleClass="save"
 					action="#{clientControleur.modifierClient(client)}" />
 
-			</h:panelGrid>
-		</h:form>
+			</b:panelGrid>
+		</b:form>
 
 		<div style="clear: both;"></div>
 
