@@ -11,69 +11,71 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 	<title>MAJ Client</title>
-	
-	<h:outputStylesheet library="css" name="style.css"  />
-	
+
+	<h:outputStylesheet library="css" name="style.css" />
+
 </h:head>
 
 <h:body>
-<ui:decorate template="/Template/template.xhtml"/>
+	<ui:decorate template="/Template/template.xhtml" />
 	<div id="wrapper">
 		<div id="header">
 			<h2></h2>
 		</div>
 	</div>
-	
+
 	<div id="container">
 		<h3>MAJ Client</h3>
 
 		<h:messages globalOnly="true" />
 
-		<h:form id="form" style="margin-top: 10px;" >
-			<h:panelGrid columns="3">
-			
-						<h:outputLabel>Prénom:</h:outputLabel>
-				<h:inputText value="#{client.prenom}" id="prenom" required="true"
-				requiredMessage="Veuillez saisir un prénom"/>
+		<b:form inline="true" id="loginForm" style="margin-top: 10px">
+			<b:panelGrid style="width:600px;" columns="3">
+
+				<h:outputLabel>Prénom:</h:outputLabel>
+				<b:inputText value="#{client.prenom}" id="prenom" required="true"
+					requiredMessage="Veuillez saisir un prénom" />
 				<h:message for="prenom" />
 
 				<h:outputLabel>Nom:</h:outputLabel>
-				<h:inputText value="#{client.nom}" id="nom" required="true"
-				 requiredMessage="Veuillez saisir un nom"/>
+				<b:inputText value="#{client.nom}" id="nom" required="true"
+					requiredMessage="Veuillez saisir un nom" />
 				<h:message for="nom" />
 
 				<h:outputLabel>Email:</h:outputLabel>
-				<h:inputText value="#{client.email}" id="email" required="true"
+				<b:inputText value="#{client.email}" id="email" required="true"
 					requiredMessage="Veuillez saisir une adresse mail." />
 				<h:message for="email" />
 
 				<h:outputLabel>Adresse:</h:outputLabel>
-				<h:inputText value="#{client.adresse}" id="adresse" label="adresse" />
+				<b:inputText value="#{client.adresse}" id="adresse"/>
 				<h:message for="adresse" />
 
 				<h:outputLabel>Ville:</h:outputLabel>
-				<h:inputText value="#{client.ville}" id="ville" label="ville"/>
+				<b:inputText value="#{client.ville}" id="ville" />
 				<h:message for="ville" />
 
 				<h:outputLabel>Téléphone:</h:outputLabel>
-				<h:inputText value="#{client.telephone}" id="tel" label="Téléphone"/>
+				<b:inputText value="#{client.telephone}" id="tel" />
 				<h:message for="tel" />
-				
+
 				<h:outputLabel>Code Postal:</h:outputLabel>
-				<h:inputText value="#{client.codePostal}" id="codePostal" label="Code Postal"/>
+				<b:inputText value="#{client.codePostal}" id="codePostal" />
 				<h:message for="codePostal" />
 
-				 <h:inputHidden value="#{client.id}" />
-				
-				 <h:commandButton value="Valider" styleClass="save" action="#{clientControleur.modifierClient(client)}"/>
-			
-			</h:panelGrid>
-		</h:form>
+				<h:inputHidden value="#{client.id}" />
+
+				<h:commandButton value="Valider" styleClass="save"
+					action="#{clientControleur.modifierClient(client)}" />
+
+			</b:panelGrid>
+		</b:form>
 
 		<div style="clear: both;"></div>
 
-		<p><h:outputLink value="liste-clients.xhtml">Retour à la liste</h:outputLink></p>
-
-	</div>	
+		<p>
+			<h:outputLink value="liste-clients.xhtml">Retour à la liste</h:outputLink>
+		</p>
+	</div>
 </h:body>
 </html>
