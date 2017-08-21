@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -10,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-	<title>Cr�ation client</title>
+	<title>Création client</title>
 
 </h:head>
 
@@ -23,24 +23,37 @@
 	</div>
 
 	<div id="container">
-		<h3>Cr�ation d'un nouveau client</h3>
+		<h3>Création d'un nouveau client</h3>
 
 		<h:messages globalOnly="true" />
 
 		<h:form id="form" style="margin-top: 10px;">
 			<h:panelGrid columns="3">
 
-				<h:outputLabel>Pr�nom:</h:outputLabel>
-				<h:inputText value="#{client.prenom}" id="prenom" />
-				<h:message for="prenom" />
+				<h:outputLabel>Prénom:</h:outputLabel>
+				<h:inputText value="#{client.prenom}" id="prenom" required="true"
+					requiredMessage="Veuillez entrer votre prénom."
+					validatorMessage="Votre nom ne doit pas contenir de numéro ni de caractères spéciaux.">
+					<f:validateRegex pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+				</h:inputText>
+				<h:message for="prenom"></h:message>
+
 
 				<h:outputLabel>Nom:</h:outputLabel>
-				<h:inputText value="#{client.nom}" id="nom" />
+				<h:inputText value="#{client.nom}" id="nom" required="true"
+					requiredMessage="Veuillez entrer votre nom."
+					validatorMessage="Votre nom ne doit pas contenir de numéro ni de caractères spéciaux.">
+					<f:validateRegex pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+				</h:inputText>
 				<h:message for="nom" />
 
 				<h:outputLabel>Email:</h:outputLabel>
 				<h:inputText value="#{client.email}" id="email" required="true"
-					requiredMessage="Your email is mandatory." />
+					requiredMessage="Veuillez saisir votre email."
+					validatorMessage="Votre email doit être du type : toto@toto.fr">
+					<f:validateRegex
+						pattern="^([_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{1,6}))?$" />
+				</h:inputText>
 				<h:message for="email" />
 
 				<h:outputLabel>Adresse:</h:outputLabel>
@@ -50,12 +63,12 @@
 
 				<h:outputLabel>Ville:</h:outputLabel>
 				<h:inputText value="#{client.ville}" id="ville" required="true"
-					requiredMessage="Veuillez saisir la ville de r�sidence." />
+					requiredMessage="Veuillez saisir la ville de résidence." />
 				<h:message for="ville" />
 
-				<h:outputLabel>T�l�phone:</h:outputLabel>
+				<h:outputLabel>Téléphone:</h:outputLabel>
 				<h:inputText value="#{client.telephone}" id="tel" required="true"
-					requiredMessage="Vous devez saisir un num�ro de t�l�phone." />
+					requiredMessage="Vous devez saisir un numéro de téléphone." />
 				<h:message for="tel" />
 				
 				<h:outputLabel>Code Postal:</h:outputLabel>
@@ -73,7 +86,7 @@
 		<div style="clear: both;"></div>
 
 		<p>
-			<h:outputLink value="liste-clients.xhtml">Retour � la liste</h:outputLink>
+			<h:outputLink value="liste-clients.xhtml">Retour à la liste</h:outputLink>
 		</p>
 
 	</div>
