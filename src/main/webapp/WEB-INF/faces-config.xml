@@ -9,7 +9,7 @@
 		<navigation-case>
 			<from-action>#{userControleur.logOut}</from-action>
 			<from-outcome>success</from-outcome>
-			<to-view-id>/login.html</to-view-id>
+			<to-view-id>/WEB-INF/login.html</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

@@ -233,7 +233,7 @@ public class ClientControleur implements Serializable {
 	public String logout() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		session.removeAttribute("loggedUser");
-		return "login.html";
+		return "WEB-INF/login.html";
 	}
 
 }

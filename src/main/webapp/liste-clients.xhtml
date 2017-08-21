@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -25,9 +25,9 @@
 	<ui:decorate template="/Template/template.xhtml" />
 	<div id="wrapper" class="jumbotron">
 		<div id="header">
-			<h2>Proxibanque</h2>
+			<h2>
 			Bienvenue
-			<h:outputText value="#{request.remoteUser}" />
+			<h:outputText value="#{request.remoteUser}" /></h2>
 		</div>
 
 
@@ -43,65 +43,67 @@
 				<br />
 				<h:form>
 
-					<h:dataTable value="#{clientControleur.clients}" var="tempClient"
+					<b:dataTable value="#{clientControleur.clients}" var="tempClient"
 						styleClass="demo-table" headerClass="demo-table-header"
 						rowClasses="demo-table-odd-row,demo-table-even-row">
 
-						<h:column>
+						<b:dataTableColumn>
 							<!-- the column header -->
 							<f:facet name="header">Prénom</f:facet>
 
 							<!--  the value for each row -->
 						#{tempClient.prenom}
-				</h:column>
+				</b:dataTableColumn>
 
-						<h:column>
+						<b:dataTableColumn>
 							<!-- the column header -->
 							<f:facet name="header">Nom</f:facet>
 
 							<!--  the value for each row -->
 						#{tempClient.nom}
-				</h:column>
+				</b:dataTableColumn>
 
-						<h:column>
+						<b:dataTableColumn>
 							<!-- the column header -->
 							<f:facet name="header">Email</f:facet>
 
 							<!--  the value for each row -->
 						#{tempClient.email}
-				</h:column>
-						<h:column>
+				</b:dataTableColumn>
+						<b:dataTableColumn>
 							<!-- the column header -->
-							<f:facet name="header">Compte Epargne</f:facet>
+							<f:facet name="header">Adresse</f:facet>
 
 							<!--  the value for each row -->
-						#{tempClient.compteEpargne}
-				</h:column>
-						<h:column>
+						#{tempClient.adresse}
+				</b:dataTableColumn>
+						<b:dataTableColumn>
 							<!-- the column header -->
-							<f:facet name="header">Compte Courant</f:facet>
+							<f:facet name="header">Ville</f:facet>
 
 							<!--  the value for each row -->
-						#{tempClient.compteCourant}
-				</h:column>
-						<h:column>
-							<!-- the column header -->
-							<f:facet name="header">Action</f:facet>
+						#{tempClient.ville}
+				</b:dataTableColumn>
 
-							<h:commandLink value="Comptes"
-								action="#{clientControleur.compteClient(tempClient.id)}" />
+							<b:dataTableColumn>
+							<f:facet name="header">Afficher les comptes</f:facet>
+							
+								<h:commandLink value="Comptes"
+									action="#{clientControleur.compteClient(tempClient.id)}" />
+							</b:dataTableColumn>
+							<b:dataTableColumn>
+							<f:facet name="header">MAJ des infos clients</f:facet>
+								<h:commandLink value="Modifier"
+									action="#{clientControleur.chargerClient(tempClient.id)}" />
+							</b:dataTableColumn>
 
-							<h:commandLink value="Mettre à jour le client"
-								action="#{clientControleur.chargerClient(tempClient.id)}" />
-
-
-							<h:commandLink value="Delete"
-								onclick="if (!confirm('Voulez-vous supprimer ce client?')) return false"
-								action="#{clientControleur.supprimerClient(tempClient.id)}" />
-
-						</h:column>
-
-					</h:dataTable>
+							<b:dataTableColumn>
+							<f:facet name="header">Supprimer le client</f:facet>
+								<h:commandLink value="Supprimer"
+									onclick="if (!confirm('Voulez-vous supprimer ce client?')) return false"
+									action="#{clientControleur.supprimerClient(tempClient.id)}" />
+							</b:dataTableColumn>
+					</b:dataTable>
 					<div></div>
 				</h:form>
 
