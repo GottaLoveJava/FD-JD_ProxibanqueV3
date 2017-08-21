@@ -34,36 +34,70 @@
 
 				<h:outputLabel>Prénom:</h:outputLabel>
 				<b:inputText value="#{client.prenom}" id="prenom" required="true"
-					requiredMessage="Veuillez saisir un prénom" />
-				<h:message for="prenom" />
+					requiredMessage="Veuillez entrer votre prénom."
+					validatorMessage="Votre prénom ne doit pas contenir de numéro ni de caractères spéciaux.">
+					<f:validateRegex
+						pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+				</b:inputText>
+
+				<h:message for="prenom"></h:message>
+
 
 				<h:outputLabel>Nom:</h:outputLabel>
 				<b:inputText value="#{client.nom}" id="nom" required="true"
-					requiredMessage="Veuillez saisir un nom" />
+					requiredMessage="Veuillez entrer votre nom."
+					validatorMessage="Votre nom ne doit pas contenir de numéro ni de caractères spéciaux.">
+					<f:validateRegex
+						pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+				</b:inputText>
+
 				<h:message for="nom" />
 
 				<h:outputLabel>Email:</h:outputLabel>
 				<b:inputText value="#{client.email}" id="email" required="true"
-					requiredMessage="Veuillez saisir une adresse mail." />
+					requiredMessage="Veuillez saisir votre email."
+					validatorMessage="Votre email doit être du type : toto@toto.fr">
+					<f:validateRegex
+						pattern="^([_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{1,6}))?$" />
+				</b:inputText>
 				<h:message for="email" />
 
 				<h:outputLabel>Adresse:</h:outputLabel>
-				<b:inputText value="#{client.adresse}" id="adresse"/>
+
+				<b:inputText value="#{client.adresse}" id="adresse" required="true"
+					requiredMessage="Veuillez saisir une adresse."
+					validatorMessage="L'adresse ne peut pas contenir de caractères spéciaux.">
+					<f:validateRegex
+						pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+				</b:inputText>
 				<h:message for="adresse" />
 
 				<h:outputLabel>Ville:</h:outputLabel>
-				<b:inputText value="#{client.ville}" id="ville" />
+				<b:inputText value="#{client.ville}" id="ville" required="true"
+					requiredMessage="Veuillez saisir la ville de résidence."
+					validatorMessage="La ville ne doit pas contenir de caractères spéciaux">
+					<f:validateRegex
+						pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+				</b:inputText>
 				<h:message for="ville" />
 
 				<h:outputLabel>Téléphone:</h:outputLabel>
-				<b:inputText value="#{client.telephone}" id="tel" />
+				<b:inputText value="#{client.telephone}" id="tel" required="true"
+					requiredMessage="Vous devez saisir un numéro de téléphone."
+					validatorMessage="Votre numéro doit contenir 10 chiffres.">
+					<f:validateRegex pattern="^[0-9]{10,10}$" />
+				</b:inputText>
 				<h:message for="tel" />
 
 				<h:outputLabel>Code Postal:</h:outputLabel>
-				<b:inputText value="#{client.codePostal}" id="codePostal" />
-				<h:message for="codePostal" />
 
-				<h:inputHidden value="#{client.id}" />
+				<b:inputText value="#{client.codePostal}" id="codePostal"
+					required="true" requiredMessage="Vous devez saisir un code postal."
+					validatorMessage="Votre code postal doit être composé de 5 chiffres">
+					<f:validateRegex pattern="^[0-9]{5,5}$" />
+				</b:inputText>
+
+				<h:message for="codePostal" />
 
 				<h:commandButton value="Valider" styleClass="save"
 					action="#{clientControleur.modifierClient(client)}" />
@@ -76,6 +110,7 @@
 		<p>
 			<h:outputLink value="liste-clients.xhtml">Retour à la liste</h:outputLink>
 		</p>
+
 	</div>
 </h:body>
 </html>

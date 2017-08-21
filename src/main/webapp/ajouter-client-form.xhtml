@@ -33,9 +33,11 @@
 				<h:outputLabel>Prénom:</h:outputLabel>
 				<b:inputText value="#{client.prenom}" id="prenom" required="true"
 					requiredMessage="Veuillez entrer votre prénom."
-					validatorMessage="Votre nom ne doit pas contenir de numéro ni de caractères spéciaux.">
-					<f:validateRegex pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+					validatorMessage="Votre prénom ne doit pas contenir de numéro ni de caractères spéciaux.">
+					<f:validateRegex
+						pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
 				</b:inputText>
+
 				<h:message for="prenom"></h:message>
 
 
@@ -43,8 +45,10 @@
 				<b:inputText value="#{client.nom}" id="nom" required="true"
 					requiredMessage="Veuillez entrer votre nom."
 					validatorMessage="Votre nom ne doit pas contenir de numéro ni de caractères spéciaux.">
-					<f:validateRegex pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+					<f:validateRegex
+						pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
 				</b:inputText>
+
 				<h:message for="nom" />
 
 				<h:outputLabel>Email:</h:outputLabel>
@@ -57,23 +61,40 @@
 				<h:message for="email" />
 
 				<h:outputLabel>Adresse:</h:outputLabel>
+
 				<b:inputText value="#{client.adresse}" id="adresse" required="true"
-					requiredMessage="Veuillez saisir une adresse." />
+					requiredMessage="Veuillez saisir une adresse."
+					validatorMessage="L'adresse ne peut pas contenir de caractères spéciaux.">
+					<f:validateRegex
+						pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+				</b:inputText>
 				<h:message for="adresse" />
 
 				<h:outputLabel>Ville:</h:outputLabel>
 				<b:inputText value="#{client.ville}" id="ville" required="true"
-					requiredMessage="Veuillez saisir la ville de résidence." />
+					requiredMessage="Veuillez saisir la ville de résidence."
+					validatorMessage="La ville ne doit pas contenir de caractères spéciaux">
+					<f:validateRegex
+						pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+				</b:inputText>
 				<h:message for="ville" />
 
 				<h:outputLabel>Téléphone:</h:outputLabel>
 				<b:inputText value="#{client.telephone}" id="tel" required="true"
-					requiredMessage="Vous devez saisir un numéro de téléphone." />
+					requiredMessage="Vous devez saisir un numéro de téléphone."
+					validatorMessage="Votre numéro doit contenir 10 chiffres.">
+					<f:validateRegex pattern="^[0-9]{10,10}$" />
+				</b:inputText>
 				<h:message for="tel" />
-				
+
 				<h:outputLabel>Code Postal:</h:outputLabel>
-				<b:inputText value="#{client.codePostal}" id="codePostal" required="true"
-					requiredMessage="Vous devez saisir un code postal." />
+
+				<b:inputText value="#{client.codePostal}" id="codePostal"
+					required="true" requiredMessage="Vous devez saisir un code postal."
+					validatorMessage="Votre code postal doit être composé de 5 chiffres">
+					<f:validateRegex pattern="^[0-9]{5,5}$" />
+				</b:inputText>
+
 				<h:message for="codePostal" />
 
 				<h:outputLabel />
