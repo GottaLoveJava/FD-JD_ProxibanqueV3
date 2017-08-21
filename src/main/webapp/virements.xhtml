@@ -31,9 +31,12 @@
 		<b:form id="loginForm" style="margin-top: 10px;">
 
 			<b:inputText id="compteInitial"
-				value="#{clientControleur.idCompteInitial}" label="Compte Provisionnaire"
-				required="true"
-				validatorMessage="Veuillez saisir un numéro de compte existant (cf. Liste en bas de page)">
+				value="#{clientControleur.idCompteInitial}"
+				label="Compte Provisionnaire" required="true"
+				requiredMessage="Veuillez saisir un numéro de compte"
+				converterMessage="Veuillez saisir un numéro de compte"
+				validatorMessage="Veuillez saisir un numéro de compte existant (cf. Liste en bas de page)"
+				>
 				<f:validateLongRange minimum="0" />
 			</b:inputText>
 
@@ -46,6 +49,8 @@
 			<b:inputText id="compteDestinataire"
 				value="#{clientControleur.idCompteDestinataire}"
 				label="Compte Destinataire" required="true"
+				requiredMessage="Veuillez saisir un numéro de compte"
+				converterMessage="Veuillez saisir un numéro de compte"
 				validatorMessage="Veuillez saisir un numéro de compte existant (cf. Liste en bas de page)">
 				<f:validateLongRange minimum="0" />
 			</b:inputText>
@@ -55,9 +60,11 @@
 
 
 
-		<b:inputText id="montant" value="#{clientControleur.montant}"
+			<b:inputText id="montant" value="#{clientControleur.montant}"
 				label="Montant du virement" required="true"
-				validatorMessage="Le montant doit être un nombre positif.">
+				requiredMessage="Veuillez saisir un montant à transférer"
+				validatorMessage="Le montant doit être un nombre positif."
+				converterMessage="Veuillez saisir un montant à transférer">
 				<f:validateDoubleRange minimum="0" />
 			</b:inputText>
 			<h:message for="montant"></h:message>
