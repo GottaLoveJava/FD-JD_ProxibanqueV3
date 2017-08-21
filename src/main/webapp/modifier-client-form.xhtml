@@ -11,69 +11,102 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 	<title>MAJ Client</title>
-	
-	<h:outputStylesheet library="css" name="style.css"  />
-	
+
+	<h:outputStylesheet library="css" name="style.css" />
+
 </h:head>
 
 <h:body>
-<ui:decorate template="/Template/template.xhtml"/>
+	<ui:decorate template="/Template/template.xhtml" />
 	<div id="wrapper">
 		<div id="header">
 			<h2></h2>
 		</div>
 	</div>
-	
+
 	<div id="container">
 		<h3>MAJ Client</h3>
 
 		<h:messages globalOnly="true" />
 
-		<h:form id="form" style="margin-top: 10px;" >
+		<h:form id="form" style="margin-top: 10px;">
 			<h:panelGrid columns="3">
-			
-						<h:outputLabel>Prénom:</h:outputLabel>
+
+				<h:outputLabel>Prénom:</h:outputLabel>
 				<h:inputText value="#{client.prenom}" id="prenom" required="true"
-				requiredMessage="Veuillez saisir un prénom"/>
-				<h:message for="prenom" />
+					requiredMessage="Veuillez entrer votre prénom."
+					validatorMessage="Votre prénom ne doit pas contenir de numéro ni de caractères spéciaux.">
+					<f:validateRegex
+						pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+				</h:inputText>
+				<h:message for="prenom"></h:message>
+
 
 				<h:outputLabel>Nom:</h:outputLabel>
 				<h:inputText value="#{client.nom}" id="nom" required="true"
-				 requiredMessage="Veuillez saisir un nom"/>
+					requiredMessage="Veuillez entrer votre nom."
+					validatorMessage="Votre nom ne doit pas contenir de numéro ni de caractères spéciaux.">
+					<f:validateRegex
+						pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+				</h:inputText>
 				<h:message for="nom" />
 
 				<h:outputLabel>Email:</h:outputLabel>
 				<h:inputText value="#{client.email}" id="email" required="true"
-					requiredMessage="Veuillez saisir une adresse mail." />
+					requiredMessage="Veuillez saisir votre email."
+					validatorMessage="Votre email doit être du type : toto@toto.fr">
+					<f:validateRegex
+						pattern="^([_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{1,6}))?$" />
+				</h:inputText>
 				<h:message for="email" />
 
 				<h:outputLabel>Adresse:</h:outputLabel>
-				<h:inputText value="#{client.adresse}" id="adresse" label="adresse" />
+				<h:inputText value="#{client.adresse}" id="adresse" required="true"
+					requiredMessage="Veuillez saisir une adresse."
+					validatorMessage="L'adresse ne peut pas contenir de caractères spéciaux.">
+					<f:validateRegex
+						pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+				</h:inputText>
 				<h:message for="adresse" />
 
 				<h:outputLabel>Ville:</h:outputLabel>
-				<h:inputText value="#{client.ville}" id="ville" label="ville"/>
+				<h:inputText value="#{client.ville}" id="ville" required="true"
+					requiredMessage="Veuillez saisir la ville de résidence."
+					validatorMessage="La ville ne doit pas contenir de caractères spéciaux">
+					<f:validateRegex
+						pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+				</h:inputText>
 				<h:message for="ville" />
 
 				<h:outputLabel>Téléphone:</h:outputLabel>
-				<h:inputText value="#{client.telephone}" id="tel" label="Téléphone"/>
+				<h:inputText value="#{client.telephone}" id="tel" required="true"
+					requiredMessage="Vous devez saisir un numéro de téléphone."
+					validatorMessage="Votre numéro doit contenir 10 chiffres.">
+					<f:validateRegex pattern="^[0-9]{10,10}$" />
+				</h:inputText>
 				<h:message for="tel" />
-				
+
 				<h:outputLabel>Code Postal:</h:outputLabel>
-				<h:inputText value="#{client.codePostal}" id="codePostal" label="Code Postal"/>
+				<h:inputText value="#{client.codePostal}" id="codePostal"
+					required="true" requiredMessage="Vous devez saisir un code postal."
+					validatorMessage="Votre code postal doit être composé de 5 chiffres">
+					<f:validateRegex pattern="^[0-9]{5,5}$" />
+				</h:inputText>
 				<h:message for="codePostal" />
 
-				 <h:inputHidden value="#{client.id}" />
-				
-				 <h:commandButton value="Valider" styleClass="save" action="#{clientControleur.modifierClient(client)}"/>
-			
+				<h:outputLabel />
+				<h:commandButton value="Valider" styleClass="save"
+					action="#{clientControleur.modifierClient(client)}" />
+
 			</h:panelGrid>
 		</h:form>
 
 		<div style="clear: both;"></div>
 
-		<p><h:outputLink value="liste-clients.xhtml">Retour à la liste</h:outputLink></p>
+		<p>
+			<h:outputLink value="liste-clients.xhtml">Retour à la liste</h:outputLink>
+		</p>
 
-	</div>	
+	</div>
 </h:body>
 </html>
