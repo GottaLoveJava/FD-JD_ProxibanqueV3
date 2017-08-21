@@ -33,13 +33,13 @@
 
 
 			<h:inputText id="compteInitial"
-				value="#{clientControleur.idCompteInitial}" label="compteInitial">
+				value="#{clientControleur.idCompteInitial}" label="compteInitial" required="true" validatorMessage="Veuillez saisir un numéro de compte existant (cf. Liste en bas de page)">
 				<f:validateLongRange minimum="0" />
 			</h:inputText>
 
 
 
-			<h:message for="montant"></h:message>
+			<h:message for="compteInitial"></h:message>
 
 
 			<h4>Compte Destinataire :</h4>
@@ -48,18 +48,18 @@
 
 			<h:inputText id="compteDestinataire"
 				value="#{clientControleur.idCompteDestinataire}"
-				label="compteDestinataire">
+				label="compteDestinataire" required="true" validatorMessage="Veuillez saisir un numéro de compte existant (cf. Liste en bas de page)">
 				<f:validateLongRange minimum="0" />
 			</h:inputText>
 
 
-			<h:message for="montant"></h:message>
+			<h:message for="compteDestinataire"></h:message>
 
 
 
 			<h4>Montant à transférer</h4>
 			<h:inputText id="montant" value="#{clientControleur.montant}"
-				label="montant">
+				label="montant" required="true" validatorMessage="Le montant doit être un nombre positif.">
 				<f:validateDoubleRange minimum="0" />
 			</h:inputText>
 			<h:message for="montant"></h:message>
