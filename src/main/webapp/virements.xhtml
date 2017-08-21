@@ -14,7 +14,7 @@
 </h:head>
 
 <h:body>
-<ui:decorate template="/Template/template.xhtml"/>
+	<ui:decorate template="/Template/template.xhtml" />
 	<div id="wrapper">
 		<div id="header">
 			<h2>Cher conseiller</h2>
@@ -28,40 +28,38 @@
 
 		<h:messages globalOnly="true" />
 
-		<h:form id="form" style="margin-top: 10px;">
-			<h4>Compte Provisionnaire :</h4>
+		<b:form id="loginForm" style="margin-top: 10px;">
 
-
-			<h:inputText id="compteInitial"
-				value="#{clientControleur.idCompteInitial}" label="compteInitial" required="true" validatorMessage="Veuillez saisir un numéro de compte existant (cf. Liste en bas de page)">
+			<b:inputText id="compteInitial"
+				value="#{clientControleur.idCompteInitial}" label="Compte Provisionnaire"
+				required="true"
+				validatorMessage="Veuillez saisir un numéro de compte existant (cf. Liste en bas de page)">
 				<f:validateLongRange minimum="0" />
-			</h:inputText>
+			</b:inputText>
 
 
 
 			<h:message for="compteInitial"></h:message>
 
 
-			<h4>Compte Destinataire :</h4>
 
-
-
-			<h:inputText id="compteDestinataire"
+			<b:inputText id="compteDestinataire"
 				value="#{clientControleur.idCompteDestinataire}"
-				label="compteDestinataire" required="true" validatorMessage="Veuillez saisir un numéro de compte existant (cf. Liste en bas de page)">
+				label="Compte Destinataire" required="true"
+				validatorMessage="Veuillez saisir un numéro de compte existant (cf. Liste en bas de page)">
 				<f:validateLongRange minimum="0" />
-			</h:inputText>
+			</b:inputText>
 
 
 			<h:message for="compteDestinataire"></h:message>
 
 
 
-			<h4>Montant à transférer</h4>
-			<h:inputText id="montant" value="#{clientControleur.montant}"
-				label="montant" required="true" validatorMessage="Le montant doit être un nombre positif.">
+		<b:inputText id="montant" value="#{clientControleur.montant}"
+				label="Montant du virement" required="true"
+				validatorMessage="Le montant doit être un nombre positif.">
 				<f:validateDoubleRange minimum="0" />
-			</h:inputText>
+			</b:inputText>
 			<h:message for="montant"></h:message>
 			<br />
 			<br />
@@ -71,13 +69,13 @@
 				action="#{clientControleur.effectuerVirement}"></h:commandButton>
 
 
-		</h:form>
+		</b:form>
 		<p>
 			<h:outputLink value="liste-clients.xhtml">Retour à la liste des clients</h:outputLink>
 		</p>
 		<div>
 			<h4>Liste des comptes disponibles</h4>
-			<h:dataTable value="#{clientControleur.listeComptes}" var="c">
+			<b:dataTable value="#{clientControleur.listeComptes}" var="c">
 				<h:column>
 					<f:facet name="header">Numéro de compte</f:facet>
 			
@@ -94,9 +92,10 @@
 					<f:facet name="header">Solde</f:facet>
 			#{c.solde}
 			</h:column>
+			</b:dataTable>
 
 
-			</h:dataTable>
+
 
 		</div>
 
